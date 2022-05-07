@@ -1,20 +1,21 @@
 import React from 'react';
 import {
-  View, TextInput, StyleSheet, KeyboardAvoidingView,
+  View, TextInput, StyleSheet,
 } from 'react-native';
 
 import AppBar from '../components/Appbar';
 import CircleButton from '../components/CircleButton';
+import KeyboardSafeView from '../components/KeyboardSafeView';
 
 export default function IdeaEditScreen() {
   return (
-    <KeyboardAvoidingView style={styles.container} behavior="height">
+    <KeyboardSafeView style={styles.container}>
       <AppBar />
       <View style={styles.inputContainer}>
         <TextInput value="アイデアリスト" multiline style={styles.input} />
       </View>
       <CircleButton name="check" />
-    </KeyboardAvoidingView>
+    </KeyboardSafeView>
   );
 }
 
