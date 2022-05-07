@@ -1,4 +1,5 @@
 // import { StatusBar } from 'expo-status-bar';
+import { Feather } from '@expo/vector-icons';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
@@ -11,7 +12,7 @@ export default function IdeaList() {
           <Text style={styles.ideaDate}>2022年3月6日 17:23</Text>
         </View>
         <View>
-          <Text>X</Text>
+          <Feather name="x" size={16} color="#b0b0b0" />
         </View>
       </View>
 
@@ -21,7 +22,7 @@ export default function IdeaList() {
           <Text style={styles.ideaDate}>2022年5月6日 17:23</Text>
         </View>
         <View>
-          <Text>X</Text>
+          <Feather name="x" size={16} color="#b0b0b0" />
         </View>
       </View>
 
@@ -31,7 +32,7 @@ export default function IdeaList() {
           <Text style={styles.ideaDate}>2022年4月6日 17:23</Text>
         </View>
         <View>
-          <Text>X</Text>
+          <Feather name="x" size={16} color="#b0b0b0" />
         </View>
       </View>
     </View>

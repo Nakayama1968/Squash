@@ -11,7 +11,7 @@ export default function IdeaListScreen() {
     <View style={styles.container}>
       <AppBar />
       <IdeaList />
-      <CircleButton>＋</CircleButton>
+      <CircleButton name="plus" />
     </View>
   );
 }

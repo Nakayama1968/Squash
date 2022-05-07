@@ -1,6 +1,8 @@
-import { number } from 'prop-types';
+// import { number } from 'prop-types';
 import React from 'react';
-import { View, ScrollView, Text, StyleSheet } from 'react-native';
+import {
+  View, ScrollView, Text, StyleSheet,
+} from 'react-native';
 
 import AppBar from '../components/Appbar';
 import CircleButton from '../components/CircleButton';
@@ -36,7 +38,7 @@ export default function IdeaDetailScreen() {
           長くなると自動にスクロールされます。
         </Text>
       </ScrollView>
-      <CircleButton style={{ top: 160, bottom: 'auto' }}>+</CircleButton>
+      <CircleButton style={{ top: 160, bottom: 'auto' }} name="plus" />
     </View>
   );
 }
