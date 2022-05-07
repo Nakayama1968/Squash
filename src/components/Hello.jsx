@@ -1,9 +1,9 @@
-import { setStatusBarBackgroundColor } from "expo-status-bar";
-import React from "react";
+// import { setStatusBarBackgroundColor } from "expo-status-bar";
+// import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { back } from "react-native/Libraries/Animated/Easing";
-import { string,bool } from 'prop-types';
-import { shape } from "prop-types";
+// import { back } from "react-native/Libraries/Animated/Easing";
+// import { string,bool } from 'prop-types';
+// import { shape } from "prop-types";
 
 function Hello(props) {
   const { children, bang, style } = props;
