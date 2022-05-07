@@ -1,12 +1,13 @@
+/* eslint-disable react/no-unused-prop-types */
 // import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { string } from 'prop-types';
+import { string, shape } from 'prop-types';
 
 export default function CircleButton(props) {
   const { children } = props;
   return (
-    <View style={styles.circleButton}>
+    <View style={[styles.circleButton, styles]}>
       <Text style={styles.circleButtonLabel}>{children}</Text>
     </View>
   );
@@ -14,6 +15,11 @@ export default function CircleButton(props) {
 
 CircleButton.propTypes = {
   children: string.isRequired,
+  style: shape(),
+};
+
+CircleButton.defaultProps = {
+  style: null,
 };
 
 const styles = StyleSheet.create({
@@ -25,6 +31,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
+    top: 550,
     right: 30,
     bottom: 30,
     shadowColor: '#000000',

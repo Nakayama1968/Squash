@@ -1,24 +1,10 @@
-// import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
 
-import AppBar from './src/components/Appbar';
-import IdeaList from './src/components/IdeaList';
-import CircleButton from './src/components/CircleButton';
+import IdeaListScreen from './src/screens/IdeaListScreen';
+import IdeaDetailScreen from './src/screens/IdeaDetailScreen';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <AppBar />
-      <IdeaList />
-      <CircleButton>＋</CircleButton>
-    </View>
+    <IdeaDetailScreen />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-  },
-});
