@@ -1,19 +1,23 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import {
   View, TextInput, StyleSheet, KeyboardAvoidingView,
 } from 'react-native';
 
-import AppBar from '../components/Appbar';
 import CircleButton from '../components/CircleButton';
 
-export default function IdeaCreateScreen() {
+export default function IdeaCreateScreen(props) {
+  const { navigation } = props;
+
   return (
     <KeyboardAvoidingView style={styles.container} behavior="height">
-      <AppBar />
       <View style={styles.inputContainer}>
         <TextInput value="アイ" multiline style={styles.input} />
       </View>
-      <CircleButton name="check" />
+      <CircleButton
+        name="check"
+        onPress={() => { navigation.navigate('IdeaList'); }}
+      />
     </KeyboardAvoidingView>
   );
 }

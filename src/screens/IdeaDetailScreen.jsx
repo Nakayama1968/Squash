@@ -1,16 +1,16 @@
+/* eslint-disable react/prop-types */
 // import { number } from 'prop-types';
 import React from 'react';
 import {
   View, ScrollView, Text, StyleSheet,
 } from 'react-native';
 
-import AppBar from '../components/Appbar';
 import CircleButton from '../components/CircleButton';
 
-export default function IdeaDetailScreen() {
+export default function IdeaDetailScreen(props) {
+  const { navigation } = props;
   return (
     <View>
-      <AppBar />
       <View style={styles.ideaHeader}>
         <Text>Pagename</Text>
       </View>
@@ -38,7 +38,11 @@ export default function IdeaDetailScreen() {
           長くなると自動にスクロールされます。
         </Text>
       </ScrollView>
-      <CircleButton style={{ top: 160, bottom: 'auto' }} name="plus" />
+      <CircleButton
+        style={{ top: 600, bottom: 'auto' }}
+        name="pencil"
+        onPress={() => { navigation.navigate('IdeaEdit'); }}
+      />
     </View>
   );
 }
@@ -60,7 +64,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 26,
     fontSize: 30,
     lineHeight: 50,
-    fontweight: 'bold',
+    fontWeight: 'bold',
   },
   ideaDate: {
     color: '#888888',
@@ -73,7 +77,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 27,
   },
   ideaText: {
-    fontsize: 16,
+    fontSize: 16,
     lineHeight: 20,
   },
 });

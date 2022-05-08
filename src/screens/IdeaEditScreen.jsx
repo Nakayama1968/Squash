@@ -1,21 +1,23 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import {
-  View, TextInput, StyleSheet,
+  View, TextInput, StyleSheet, KeyboardAvoidingView,
 } from 'react-native';
 
-import AppBar from '../components/Appbar';
 import CircleButton from '../components/CircleButton';
-import KeyboardSafeView from '../components/KeyboardSafeView';
 
-export default function IdeaEditScreen() {
+export default function IdeaEditScreen(props) {
+  const { navigation } = props;
   return (
-    <KeyboardSafeView style={styles.container}>
-      <AppBar />
+    <KeyboardAvoidingView style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput value="アイデアリスト" multiline style={styles.input} />
       </View>
-      <CircleButton name="check" />
-    </KeyboardSafeView>
+      <CircleButton
+        name="check"
+        onPress={() => { navigation.goBack(); }}
+      />
+    </KeyboardAvoidingView>
   );
 }
 

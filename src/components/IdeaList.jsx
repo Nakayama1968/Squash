@@ -1,40 +1,68 @@
 // import { StatusBar } from 'expo-status-bar';
 import { Feather } from '@expo/vector-icons';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  StyleSheet, Text, View, TouchableOpacity, Alert,
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export default function IdeaList() {
+  const navigation = useNavigation();
   return (
     <View>
-      <View style={styles.ideaListItem}>
+      <TouchableOpacity
+        style={styles.ideaListItem}
+        onPress={() => { navigation.navigate('IdeaDetail'); }}
+      >
         <View>
           <Text style={styles.ideaTitle}>アイデアリスト</Text>
           <Text style={styles.ideaDate}>2022年3月6日 17:23</Text>
         </View>
         <View>
-          <Feather name="x" size={16} color="#b0b0b0" />
+          <TouchableOpacity
+            style={styles.ideaDelete}
+            onPress={() => { Alert.alert('Are you sure?'); }}
+          >
+            <Feather name="x" size={16} color="#b0b0b0" />
+          </TouchableOpacity>
         </View>
-      </View>
+      </TouchableOpacity>
 
-      <View style={styles.ideaListItem}>
+      <TouchableOpacity
+        style={styles.ideaListItem}
+        onPress={() => { navigation.navigate('IdeaDetail'); }}
+      >
         <View>
           <Text style={styles.ideaTitle}>アイデアリスト</Text>
-          <Text style={styles.ideaDate}>2022年5月6日 17:23</Text>
+          <Text style={styles.ideaDate}>2022年3月6日 17:23</Text>
         </View>
         <View>
-          <Feather name="x" size={16} color="#b0b0b0" />
+          <TouchableOpacity
+            style={styles.ideaDelete}
+            onPress={() => { Alert.alert('Are you sure?'); }}
+          >
+            <Feather name="x" size={16} color="#b0b0b0" />
+          </TouchableOpacity>
         </View>
-      </View>
+      </TouchableOpacity>
 
-      <View style={styles.ideaListItem}>
+      <TouchableOpacity
+        style={styles.ideaListItem}
+        onPress={() => { navigation.navigate('IdeaDetail'); }}
+      >
         <View>
           <Text style={styles.ideaTitle}>アイデアリスト</Text>
-          <Text style={styles.ideaDate}>2022年4月6日 17:23</Text>
+          <Text style={styles.ideaDate}>2022年3月6日 17:23</Text>
         </View>
         <View>
-          <Feather name="x" size={16} color="#b0b0b0" />
+          <TouchableOpacity
+            style={styles.ideaDelete}
+            onPress={() => { Alert.alert('Are you sure?'); }}
+          >
+            <Feather name="x" size={16} color="#b0b0b0" />
+          </TouchableOpacity>
         </View>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -58,5 +86,8 @@ const styles = StyleSheet.create({
     top: 2,
     fontSize: 10,
     color: '#777777',
+  },
+  ideaDelete: {
+    padding: 8,
   },
 });

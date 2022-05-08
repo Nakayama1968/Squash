@@ -1,23 +1,24 @@
 /* eslint-disable react/no-unused-prop-types */
 // import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { string, shape } from 'prop-types';
-import { Feather } from '@expo/vector-icons';
+import { StyleSheet, TouchableOpacity } from 'react-native';
+import { string, shape, func } from 'prop-types';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function CircleButton(props) {
-  const { name } = props;
+  const { style, name, onPress } = props;
   return (
-    <View style={[styles.circleButton, styles]}>
-      <Feather name={name} size={32} color="white" />
-    </View>
+    <TouchableOpacity style={[styles.circleButton, style]} onPress={onPress}>
+      <MaterialCommunityIcons name={name} size={32} color="white" />
+    </TouchableOpacity>
   );
 }
 
 CircleButton.propTypes = {
-  // children: string.isRequired,
   style: shape(),
   name: string.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  onPress: func,
 };
 
 CircleButton.defaultProps = {

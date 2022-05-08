@@ -1,23 +1,42 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import {
-  View, Text, TextInput, StyleSheet,
+  View, Text, TextInput, StyleSheet, TouchableOpacity,
 } from 'react-native';
+// import { Alert } from 'react-native-web';
 
-import AppBar from '../components/Appbar';
 import Button from '../components/Button';
 
-export default function LogInScreen() {
+export default function LogInScreen(props) {
+  const { navigation } = props;
+
   return (
     <View style={styles.container}>
-      <AppBar />
       <View style={styles.inner}>
         <Text style={styles.title}>Log In</Text>
         <TextInput style={styles.input} value="Email Address" />
         <TextInput style={styles.input} value="Password" />
-        <Button label="submit" />
+        <Button
+          label="submit"
+          onPress={() => {
+            navigation.reset({
+              index: 0,
+              routes: [{ name: 'IdeaList' }],
+            });
+          }}
+        />
         <View style={styles.footer}>
           <Text style={styles.footerText}>Not registered?</Text>
-          <Text style={styles.footerLink}>Sign up here!</Text>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.reset({
+                index: 0,
+                routes: [{ name: 'SignUp' }],
+              });
+            }}
+          >
+            <Text style={styles.footerLink}>Sign up here!</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -64,7 +83,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   footerText: {
-    fontsize: 14,
+    fontSize: 14,
     lineHeight: 24,
     marginRight: 12,
   },
