@@ -3,17 +3,16 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-import IdeaCard from '../components/IdeaCard';
+import IdeaCard from '../../components/IdeaCard';
+// import HeartButton from '../../components/HeartButton';
+// import StarButton from '../../components/StarButton';
+// import RacketButton from '../../components/RacketButton';
+// import HandsOnButton from '../../components/HandsOnButton';
+import AppBar from '../../components/AppBar';
+import BottomBar from '../../components/BottomBar';
+import RankingButton from '../../components/RankingButton';
 
-// import HeartButton from '../components/HeartButton';
-// import StarButton from '../components/StarButton';
-// import RacketButton from '../components/RacketButton';
-// import HandsOnButton from '../components/HandsOnButton';
-import AppBar from '../components/AppBar';
-import BottomBar from '../components/BottomBar';
-import RankingButton from '../components/RankingButton';
-
-export default function PracticeListScreen(props) {
+export default function ContriListScreen(props) {
   // eslint-disable-next-line no-unused-vars
   const { navigation } = props;
 
@@ -22,7 +21,7 @@ export default function PracticeListScreen(props) {
       <View style={styles.container}>
         <AppBar />
         <View style={styles.pageTop}>
-          <Text style={styles.pageName}>PracticeRanking</Text>
+          <Text style={styles.pageName}>ContributingRanking</Text>
         </View>
         <IdeaCard />
         <IdeaCard />
@@ -43,7 +42,7 @@ export default function PracticeListScreen(props) {
           onPress={() => { navigation.navigate('IdeaCreate'); }}
         /> */}
         <RankingButton />
-        <Text style={styles.pageTitle}>実践ランキング</Text>
+        <Text style={styles.pageTitle}>貢献ランキング</Text>
       </View>
       <View>
         <BottomBar />
@@ -57,7 +56,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ececec',
     borderTopWidth: 5,
-    borderTopColor: '#eb8e26',
+    borderTopColor: '#93aa16',
   },
   pageTop: {
     height: 50,
@@ -74,7 +73,7 @@ const styles = StyleSheet.create({
   pageTitle: {
     position: 'absolute',
     top: 160,
-    paddingHorizontal: 40,
+    paddingHorizontal: '5%',
     fontSize: 18,
     fontStyle: 'bold',
   },

@@ -1,24 +1,65 @@
 import React from 'react';
 import {
-  StyleSheet, View,
+  StyleSheet, TouchableOpacity, View,
 } from 'react-native';
 import { FontAwesome, MaterialIcons, FontAwesome5 } from '@expo/vector-icons';
+import { shape } from 'prop-types';
+import { useNavigation } from '@react-navigation/native';
 
-export default function BottomBar() {
+export default function BottomBar(props) {
+  const { style } = props;
+  const navigation = useNavigation();
   return (
     <View>
       <View style={styles.BottomBar}>
         <View style={styles.BottomBarInner}>
-          <FontAwesome name="search" size={26} color="#eeeeee" />
-          <FontAwesome5 name="user-alt" size={25} color="#eeeeee" />
-          <MaterialIcons name="pie-chart" size={26} color="#eeeeee" />
-          <FontAwesome5 name="list" size={26} color="#eeeeee" />
-          <FontAwesome name="home" size={26} color="#eeeeee" />
+          <TouchableOpacity
+            style={[styles.bottomNaviButton1, style]}
+            onPress={() => { navigation.navigate('IdeaSearch'); }}
+          >
+            <FontAwesome name="search" size={26} color="#eeeeee" />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[styles.bottomNaviButton2, style]}
+            onPress={() => { navigation.navigate('MemberSearch'); }}
+          >
+            <FontAwesome5 name="user-alt" size={26} color="#eeeeee" />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[styles.bottomNaviButton3, style]}
+            onPress={() => { navigation.navigate('IdeaList'); }}
+          >
+            <MaterialIcons name="pie-chart" size={26} color="#eeeeee" />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[styles.bottomNaviButton4, style]}
+            onPress={() => { navigation.navigate('IdeaList'); }}
+          >
+            <FontAwesome5 name="list" size={26} color="#eeeeee" />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[styles.bottomNaviButton5, style]}
+            onPress={() => { navigation.navigate('IdeaList'); }}
+          >
+            <FontAwesome name="home" size={26} color="#eeeeee" />
+          </TouchableOpacity>
         </View>
       </View>
     </View>
   );
 }
+
+BottomBar.propTypes = {
+  style: shape(),
+};
+
+BottomBar.defaultProps = {
+  style: null,
+};
 
 const styles = StyleSheet.create({
   BottomBar: {
@@ -36,14 +77,14 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    color: '#ffffff',
+    color: 'red',
     paddingHorizontal: 20,
   },
   BottomBarRight: {
     position: 'absolute',
     right: 20,
     bottom: 15,
-    color: '#999999',
+    color: 'blue',
   },
   BottomBarTitle: {
     position: 'absolute',
@@ -51,6 +92,6 @@ const styles = StyleSheet.create({
     top: 13,
     fontSize: 40,
     lineHeight: 38,
-    color: '#ffffff',
+    color: 'green',
   },
 });

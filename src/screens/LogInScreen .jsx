@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     lineHeight: 32,
     paddingHorizontal: 32,
     paddingVertical: 8,
-    color: 'white',
+    color: '#ffffff',
   },
   footerText: {
     fontSize: 14,

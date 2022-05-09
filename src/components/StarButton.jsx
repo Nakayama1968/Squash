@@ -9,7 +9,7 @@ export default function StarButton(props) {
   const { style, name, onPress } = props;
   return (
     <TouchableOpacity style={[styles.StarButton, style]} onPress={onPress}>
-      <MaterialCommunityIcons name={name} size={32} color="white" />
+      <MaterialCommunityIcons name={name} size={32} color="#ffffff" />
     </TouchableOpacity>
   );
 }

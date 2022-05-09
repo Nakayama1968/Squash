@@ -1,23 +1,27 @@
 import 'react-native-gesture-handler';
-import { StatusBar, Platform } from 'react-native';
+// import { StatusBar, Platform } from 'react-native';
 
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import firebase from 'firebase';
 
-import IdeaListScreen from './src/screens/IdeaListScreen';
+import IdeaListScreen from './src/screens/List/IdeaListScreen';
 import IdeaDetailScreen from './src/screens/IdeaDetailScreen';
 import IdeaEditScreen from './src/screens/IdeaEditScreen';
 import IdeaCreateScreen from './src/screens/IdeaCreateScreen';
 import LogInScreen from './src/screens/LogInScreen ';
 import SignUpScreen from './src/screens/SignUpScreen';
-import HeartListScreen from './src/screens/HeartListScreen';
-import ContriListScreen from './src/screens/ContriListScreen';
-import PracticeListScreen from './src/screens/PracticeListScreen';
-import StarListScreen from './src/screens/StarListScreen';
+import HeartListScreen from './src/screens/List/HeartListScreen';
+import ContriListScreen from './src/screens/List/ContriListScreen';
+import PracticeListScreen from './src/screens/List/PracticeListScreen';
+import StarListScreen from './src/screens/List/StarListScreen';
 import IdeaContriScreen from './src/screens/IdeaContriScreen';
 import IdeaHandsScreen from './src/screens/IdeaHandsScreen';
+import IdeaSearchScreen from './src/screens/Tab/IdeaSearchScreen';
+import MemberSearchScreen from './src/screens/Tab/MemberSearchScreen';
+import MessageScreen from './src/screens/Tab/MessageScreen';
+import MessageEditScreen from './src/screens/Tab/MessageEditScreen';
 
 import { firebaseConfig } from './env';
 
@@ -54,8 +58,10 @@ export default function App() {
         <Stack.Screen name="StarList" component={StarListScreen} />
         <Stack.Screen name="IdeaContri" component={IdeaContriScreen} />
         <Stack.Screen name="IdeaHands" component={IdeaHandsScreen} />
-
-
+        <Stack.Screen name="IdeaSearch" component={IdeaSearchScreen} />
+        <Stack.Screen name="MemberSearch" component={MemberSearchScreen} />
+        <Stack.Screen name="Message" component={MessageScreen} />
+        <Stack.Screen name="MessageEdit" component={MessageEditScreen} />
         <Stack.Screen
           name="LogIn"
           component={LogInScreen}

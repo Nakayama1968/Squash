@@ -23,7 +23,7 @@ export default function SignUpScreen(props) {
         });
       })
       .catch((error) => {
-        console.log(error.code, error.massage);
+        console.log(error.code, error.Message);
         Alert.alert(error.code);
       });
   }
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     lineHeight: 32,
     paddingHorizontal: 32,
     paddingVertical: 8,
-    color: 'white',
+    color: '#ffffff',
   },
   footerText: {
     fontSize: 14,

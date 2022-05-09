@@ -2,7 +2,7 @@
 // import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { string, shape, func } from 'prop-types';
+import { shape } from 'prop-types';
 // import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -46,9 +46,6 @@ export default function RankingButton(prop) {
 
 RankingButton.propTypes = {
   style: shape(),
-  name: string.isRequired,
-  // eslint-disable-next-line react/require-default-props
-  onPress: func,
 };
 
 RankingButton.defaultProps = {

@@ -4,7 +4,7 @@ import {
   StyleSheet, Text, View, TouchableOpacity, Alert,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { FontAwesome, Feather } from '@expo/vector-icons';
+import { FontAwesome, Ionicons } from '@expo/vector-icons';
 
 export default function IdeaCard() {
   const navigation = useNavigation();
@@ -28,7 +28,7 @@ export default function IdeaCard() {
               style={styles.ideaNext}
               onPress={() => { Alert.alert('Are you sure?'); }}
             >
-              <Feather name="arrow-right" size={16} color="#b0b0b0" />
+              <Ionicons name="arrow-forward" size={16} color="#b0b0b0" />
             </TouchableOpacity>
           </View>
         </TouchableOpacity>
@@ -50,7 +50,7 @@ export default function IdeaCard() {
               style={styles.ideaNext}
               onPress={() => { Alert.alert('Are you sure?'); }}
             >
-              <Feather name="arrow-right" size={16} color="#b0b0b0" />
+              <Ionicons name="arrow-forward" size={16} color="#b0b0b0" />
             </TouchableOpacity>
           </View>
         </TouchableOpacity>
@@ -72,7 +72,7 @@ export default function IdeaCard() {
               style={styles.ideaNext}
               onPress={() => { Alert.alert('Are you sure?'); }}
             >
-              <Feather name="arrow-right" size={16} color="#b0b0b0" />
+              <Ionicons name="arrow-forward" size={16} color="#b0b0b0" />
             </TouchableOpacity>
           </View>
         </TouchableOpacity>
@@ -94,7 +94,7 @@ export default function IdeaCard() {
               style={styles.ideaNext}
               onPress={() => { Alert.alert('Are you sure?'); }}
             >
-              <Feather name="arrow-right" size={16} color="#b0b0b0" />
+              <Ionicons name="arrow-forward" size={16} color="#b0b0b0" />
             </TouchableOpacity>
           </View>
         </TouchableOpacity>
@@ -107,12 +107,14 @@ const styles = StyleSheet.create({
   baseStyle: {
     backgroundColor: '#ffffff',
     top: 30,
-    width: '90%',
-    paddingTop: 72,
-    marginHorizontal: '5%',
+    width: '94%',
+    paddingTop: 70,
+    left: '3%',
+    right: '3%',
     height: 'auto',
     paddingBottom: 30,
     justifyContent: 'top',
+    borderRadius: 8,
 
   },
   IdeaCardItem: {
@@ -139,7 +141,7 @@ const styles = StyleSheet.create({
   ideaTitle: {
     width: 300,
     fontSize: 14,
-    paddingHorizontal: 10,
+    paddingHorizontal: '3%',
     align: 'left',
     color: 'black',
   },

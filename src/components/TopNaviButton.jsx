@@ -1,8 +1,7 @@
-/* eslint-disable react/no-unused-prop-types */
 // import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { string, shape, func } from 'prop-types';
+import { shape } from 'prop-types';
 // import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -14,7 +13,7 @@ export default function TopNaviButton(props) {
     <View style={styles.topNaviButton}>
       <TouchableOpacity
         style={[styles.topNaviButton1, style]}
-        onPress={() => { navigation.navigate('IdeaCreate'); }}
+        onPress={() => { navigation.navigate('Message'); }}
       >
         <MaterialIcons name="messenger-outline" size={31} color="#ffffff" />
       </TouchableOpacity>
@@ -26,7 +25,7 @@ export default function TopNaviButton(props) {
       </TouchableOpacity>
       <TouchableOpacity
         style={[styles.topNaviButton3, style]}
-        onPress={() => { navigation.navigate('IdeaEdit'); }}
+        onPress={() => { navigation.navigate('IdeaCreate'); }}
       >
         <FontAwesome name="plus-square-o" size={32} color="#ffffff" />
       </TouchableOpacity>
@@ -36,9 +35,6 @@ export default function TopNaviButton(props) {
 
 TopNaviButton.propTypes = {
   style: shape(),
-  name: string.isRequired,
-  // eslint-disable-next-line react/require-default-props
-  onPress: func,
 };
 
 TopNaviButton.defaultProps = {

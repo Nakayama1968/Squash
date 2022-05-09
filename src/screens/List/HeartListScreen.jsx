@@ -3,10 +3,10 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-import IdeaCard from '../components/IdeaCard';
-import AppBar from '../components/AppBar';
-import BottomBar from '../components/BottomBar';
-import RankingButton from '../components/RankingButton';
+import IdeaCard from '../../components/IdeaCard';
+import AppBar from '../../components/AppBar';
+import BottomBar from '../../components/BottomBar';
+import RankingButton from '../../components/RankingButton';
 
 export default function HeartListScreen(props) {
   // eslint-disable-next-line no-unused-vars
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   pageTitle: {
     position: 'absolute',
     top: 160,
-    paddingHorizontal: 40,
+    paddingHorizontal: '5%',
     fontSize: 18,
     fontStyle: 'bold',
   },
