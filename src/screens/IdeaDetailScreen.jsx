@@ -4,24 +4,31 @@ import React from 'react';
 import {
   View, ScrollView, Text, StyleSheet,
 } from 'react-native';
+import AppBar from '../components/AppBar';
 
-import CircleButton from '../components/CircleButton';
+import HandsOnButton from '../components/HandsOnButton';
+import HeartButton from '../components/HeartButton';
+import RacketButton from '../components/RacketButton';
 
 export default function IdeaDetailScreen(props) {
   const { navigation } = props;
   return (
-    <View>
-      <View style={styles.ideaHeader}>
-        <Text>Pagename</Text>
-      </View>
-      <View>
-        <Text style={styles.ideaTitle}>アイデアタイトル</Text>
+    <View style={styles.container}>
+      <AppBar />
+      <View style={styles.pageTop}>
+        <Text style={styles.pageName}>IdeaDetail</Text>
       </View>
       <View>
         <Text style={styles.ideaDate}>2020年12月24日 11:00</Text>
       </View>
+      <View>
+        <Text style={styles.ideaTitle}>アイデアディテイル</Text>
+      </View>
+      <View>
+        <Text style={styles.ideaName}>Tsutomu Nakayama</Text>
+      </View>
       <ScrollView style={styles.ideaBody}>
-        <Text style={styles.ideaText}>
+        <Text style={styles.ideaText1}>
           ここにはそれぞれの人のアイデアが表示されていきます。
           長くなると自動にスクロールされます。
           ここにはそれぞれの人のアイデアが表示されていきます。
@@ -38,10 +45,20 @@ export default function IdeaDetailScreen(props) {
           長くなると自動にスクロールされます。
         </Text>
       </ScrollView>
-      <CircleButton
-        style={{ top: 600, bottom: 'auto' }}
-        name="pencil"
-        onPress={() => { navigation.navigate('IdeaEdit'); }}
+      <HeartButton
+        style={{ left: 40, top: 'auto', bottom: 0 }}
+        name="heart"
+        onPress={() => { navigation.navigate('IdeaCreate'); }}
+      />
+      <RacketButton
+        style={{ right: 100, top: 'auto', bottom: 0 }}
+        name="tennis"
+        onPress={() => { navigation.navigate('IdeaContri'); }}
+      />
+      <HandsOnButton
+        style={{ right: 40, top: 'auto', bottom: 0 }}
+        name="people"
+        onPress={() => { navigation.navigate('IdeaHands'); }}
       />
     </View>
   );
@@ -49,35 +66,56 @@ export default function IdeaDetailScreen(props) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#555555',
-  },
-  ideaHeader: {
     backgroundColor: '#ececec',
-    borderBottomRightRadius: 50,
-    height: 50,
-    justifyContent: 'center',
-    paddingHorizontal: 20,
+    borderTopWidth: 5,
+    borderTopColor: '#9E887B',
   },
-  ideaTitle: {
+  pageTop: {
+    height: 50,
+    backgroundColor: '#ffffff',
+    borderBottomRightRadius: 30,
+  },
+  pageName: {
     color: '#333333',
     paddingHorizontal: 26,
-    fontSize: 30,
+    fontSize: 20,
     lineHeight: 50,
     fontWeight: 'bold',
   },
   ideaDate: {
-    color: '#888888',
-    paddingHorizontal: 28,
+    color: '#999999',
+    top: 5,
     fontSize: 12,
-    lineHeight: 15,
+    lineHeight: 30,
+    justifyContent: 'center',
+    paddingHorizontal: 28,
+  },
+  ideaTitle: {
+    color: '#333333',
+    paddingHorizontal: 26,
+    fontSize: 18,
+    lineHeight: 40,
+    fontWeight: 'bold',
+  },
+  ideaName: {
+    color: '#666666',
+    paddingHorizontal: 28,
+    fontSize: 14,
+    lineHeight: 14,
   },
   ideaBody: {
-    paddingVertical: 20,
-    paddingHorizontal: 27,
+    margin: 20,
+    paddingVertical: 5,
+    paddingHorizontal: 5,
+    backgroundColor: '#ffffff',
+    borderRadius: 8,
+    height: '55%',
   },
-  ideaText: {
-    fontSize: 16,
-    lineHeight: 20,
+  ideaText1: {
+    fontSize: 14,
+    lineHeight: 24,
+    padding: 13,
+    scrooll: 'auto',
+    borderRadius: 5,
   },
 });

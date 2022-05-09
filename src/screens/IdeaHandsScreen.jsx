@@ -7,21 +7,21 @@ import {
 import { TextInput } from 'react-native-gesture-handler';
 import AppBar from '../components/AppBar';
 
-import StarButton from '../components/StarButton';
+import HandsOnButton from '../components/HandsOnButton';
 
-export default function IdeaCreateScreen(props) {
+export default function IdeaDetailScreen(props) {
   const { navigation } = props;
   return (
     <View style={styles.container}>
       <AppBar />
       <View style={styles.pageTop}>
-        <Text style={styles.pageName}>IdeaCreate</Text>
+        <Text style={styles.pageName}>IdeaHands</Text>
       </View>
       <View>
         <Text style={styles.ideaDate}>2020年12月24日 11:00</Text>
       </View>
       <View>
-        <Text style={styles.ideaTitle}>Re:アイデアクリエイト</Text>
+        <Text style={styles.ideaTitle}>Re:アイデアハンズ</Text>
       </View>
       <View>
         <Text style={styles.ideaName}>Tsutomu Nakayama</Text>
@@ -29,9 +29,9 @@ export default function IdeaCreateScreen(props) {
       <ScrollView style={styles.ideaBody}>
         <TextInput style={styles.ideaText1} />
       </ScrollView>
-      <StarButton
+      <HandsOnButton
         style={{ right: 40, top: 'auto', bottom: 0 }}
-        name="star"
+        name="people"
         onPress={() => { navigation.navigate('IdeaList'); }}
       />
     </View>
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#ececec',
     borderTopWidth: 5,
-    borderTopColor: '#44b5fc',
+    borderTopColor: '#Eb8e26',
   },
   pageTop: {
     height: 50,

@@ -4,15 +4,11 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
 import IdeaCard from '../components/IdeaCard';
-import HeartButton from '../components/HeartButton';
-import StarButton from '../components/StarButton';
-import RacketButton from '../components/RacketButton';
-import HandsOnButton from '../components/HandsOnButton';
 import AppBar from '../components/AppBar';
 import BottomBar from '../components/BottomBar';
 import RankingButton from '../components/RankingButton';
 
-export default function IdeaListScreen(props) {
+export default function StarListScreen(props) {
   // eslint-disable-next-line no-unused-vars
   const { navigation } = props;
 
@@ -21,27 +17,28 @@ export default function IdeaListScreen(props) {
       <View style={styles.container}>
         <AppBar />
         <View style={styles.pageTop}>
-          <Text style={styles.pageName}>StarRanking</Text>
+          <Text style={styles.pageName}>IdeaList</Text>
         </View>
         <IdeaCard />
-        <StarButton
+        <IdeaCard />
+        <RankingButton
           name="star"
           onPress={() => { navigation.navigate('StarList'); }}
         />
-        <HeartButton
+        <RankingButton
           name="heart"
           onPress={() => { navigation.navigate('HeartList'); }}
         />
-        <RacketButton
+        <RankingButton
           name="tennis"
           onPress={() => { navigation.navigate('ContriList'); }}
         />
-        <HandsOnButton
+        <RankingButton
           name="people"
           onPress={() => { navigation.navigate('PracticeList'); }}
         />
         <RankingButton />
-        <Text style={styles.pageTitle}>新着アイデア</Text>
+        <Text style={styles.pageTitle}>発案ランキング</Text>
       </View>
       <View>
         <BottomBar />
@@ -55,7 +52,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ececec',
     borderTopWidth: 5,
-    borderTopColor: '#d8cbcb',
+    borderTopColor: '#44b5fc',
   },
   pageTop: {
     height: 50,

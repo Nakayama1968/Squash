@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View, Text, TextInput, StyleSheet, TouchableOpacity, Alert,
 } from 'react-native';
@@ -13,6 +13,25 @@ export default function LogInScreen(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  useEffect(() => {
+    console.log('useEffect!');
+    return () => {
+      console.log('Unmount!');
+    };
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'IdeaCard' }],
+        });
+      }
+    });
+    return unsubscribe;
+  }, []);
+
   function handlePress() {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
@@ -20,7 +39,7 @@ export default function LogInScreen(props) {
         console.log(user.uid);
         navigation.reset({
           index: 0,
-          routes: [{ name: 'IdeaList' }],
+          routes: [{ name: 'IdeaCard' }],
         });
       })
       .catch((error) => {

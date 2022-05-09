@@ -4,15 +4,15 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
 import IdeaCard from '../components/IdeaCard';
-import HeartButton from '../components/HeartButton';
-import StarButton from '../components/StarButton';
-import RacketButton from '../components/RacketButton';
-import HandsOnButton from '../components/HandsOnButton';
+// import HeartButton from '../components/HeartButton';
+// import StarButton from '../components/StarButton';
+// import RacketButton from '../components/RacketButton';
+// import HandsOnButton from '../components/HandsOnButton';
 import AppBar from '../components/AppBar';
 import BottomBar from '../components/BottomBar';
 import RankingButton from '../components/RankingButton';
 
-export default function IdeaListScreen(props) {
+export default function ContriListScreen(props) {
   // eslint-disable-next-line no-unused-vars
   const { navigation } = props;
 
@@ -21,27 +21,28 @@ export default function IdeaListScreen(props) {
       <View style={styles.container}>
         <AppBar />
         <View style={styles.pageTop}>
-          <Text style={styles.pageName}>StarRanking</Text>
+          <Text style={styles.pageName}>ContributingRanking</Text>
         </View>
         <IdeaCard />
-        <StarButton
+        <IdeaCard />
+        {/* <StarButton
           name="star"
-          onPress={() => { navigation.navigate('StarList'); }}
+          onPress={() => { navigation.navigate('IdeaCreate'); }}
         />
         <HeartButton
           name="heart"
-          onPress={() => { navigation.navigate('HeartList'); }}
+          onPress={() => { navigation.navigate('IdeaCreate'); }}
         />
         <RacketButton
           name="tennis"
-          onPress={() => { navigation.navigate('ContriList'); }}
+          onPress={() => { navigation.navigate('IdeaCreate'); }}
         />
         <HandsOnButton
           name="people"
-          onPress={() => { navigation.navigate('PracticeList'); }}
-        />
+          onPress={() => { navigation.navigate('IdeaCreate'); }}
+        /> */}
         <RankingButton />
-        <Text style={styles.pageTitle}>新着アイデア</Text>
+        <Text style={styles.pageTitle}>貢献ランキング</Text>
       </View>
       <View>
         <BottomBar />
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ececec',
     borderTopWidth: 5,
-    borderTopColor: '#d8cbcb',
+    borderTopColor: '#93aa16',
   },
   pageTop: {
     height: 50,

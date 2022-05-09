@@ -1,4 +1,6 @@
 import 'react-native-gesture-handler';
+import { StatusBar, Platform } from 'react-native';
+
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
@@ -10,6 +12,12 @@ import IdeaEditScreen from './src/screens/IdeaEditScreen';
 import IdeaCreateScreen from './src/screens/IdeaCreateScreen';
 import LogInScreen from './src/screens/LogInScreen ';
 import SignUpScreen from './src/screens/SignUpScreen';
+import HeartListScreen from './src/screens/HeartListScreen';
+import ContriListScreen from './src/screens/ContriListScreen';
+import PracticeListScreen from './src/screens/PracticeListScreen';
+import StarListScreen from './src/screens/StarListScreen';
+import IdeaContriScreen from './src/screens/IdeaContriScreen';
+import IdeaHandsScreen from './src/screens/IdeaHandsScreen';
 
 import { firebaseConfig } from './env';
 
@@ -23,22 +31,31 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="SingUp"
+        initialRouteName="IdeaList"
         screenOptions={{
-          headerStyle: { backgroundColor: '#5c4343' },
+          headerStyle: { backgroundColor: '#111111' },
           headerTitleStyle: { color: '#ffffff', fontSize: 24 },
-          headerTitle: 'Squash',
+          headerTitle: '',
           headerTintColor: '#ffffff',
           headerBackTitle: 'Back',
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           gestureEnabled: true,
           gestureDirection: 'horizontal',
+          UIStatusBarStyle: 'lightContent',
         }}
       >
         <Stack.Screen name="IdeaList" component={IdeaListScreen} />
         <Stack.Screen name="IdeaDetail" component={IdeaDetailScreen} />
         <Stack.Screen name="IdeaEdit" component={IdeaEditScreen} />
         <Stack.Screen name="IdeaCreate" component={IdeaCreateScreen} />
+        <Stack.Screen name="HeartList" component={HeartListScreen} />
+        <Stack.Screen name="ContriList" component={ContriListScreen} />
+        <Stack.Screen name="PracticeList" component={PracticeListScreen} />
+        <Stack.Screen name="StarList" component={StarListScreen} />
+        <Stack.Screen name="IdeaContri" component={IdeaContriScreen} />
+        <Stack.Screen name="IdeaHands" component={IdeaHandsScreen} />
+
+
         <Stack.Screen
           name="LogIn"
           component={LogInScreen}

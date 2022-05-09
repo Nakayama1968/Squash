@@ -3,40 +3,41 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { string, shape, func } from 'prop-types';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+// import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
-export default function CircleButton(props) {
+export default function HandsOnButton(props) {
   const { style, name, onPress } = props;
   return (
-    <TouchableOpacity style={[styles.circleButton, style]} onPress={onPress}>
-      <MaterialCommunityIcons name={name} size={32} color="white" />
+    <TouchableOpacity style={[styles.handsonButton, style]} onPress={onPress}>
+      <Ionicons name={name} size={26} color="#ffffff" />
     </TouchableOpacity>
   );
 }
 
-CircleButton.propTypes = {
+HandsOnButton.propTypes = {
   style: shape(),
   name: string.isRequired,
   // eslint-disable-next-line react/require-default-props
   onPress: func,
 };
 
-CircleButton.defaultProps = {
+HandsOnButton.defaultProps = {
   style: null,
 };
 
 const styles = StyleSheet.create({
-  circleButton: {
-    backgroundColor: 'green',
-    width: 64,
-    height: 64,
+  handsonButton: {
+    backgroundColor: '#EB8e26',
+    width: 40,
+    height: 40,
     borderRadius: 32,
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
-    top: 630,
+    top: 'auto',
     right: 30,
-    bottom: 30,
+    bottom: 85,
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.25,

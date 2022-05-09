@@ -7,21 +7,21 @@ import {
 import { TextInput } from 'react-native-gesture-handler';
 import AppBar from '../components/AppBar';
 
-import StarButton from '../components/StarButton';
+import RacketButton from '../components/RacketButton';
 
-export default function IdeaCreateScreen(props) {
+export default function IdeaDetailScreen(props) {
   const { navigation } = props;
   return (
     <View style={styles.container}>
       <AppBar />
       <View style={styles.pageTop}>
-        <Text style={styles.pageName}>IdeaCreate</Text>
+        <Text style={styles.pageName}>IdeaContri</Text>
       </View>
       <View>
         <Text style={styles.ideaDate}>2020年12月24日 11:00</Text>
       </View>
       <View>
-        <Text style={styles.ideaTitle}>Re:アイデアクリエイト</Text>
+        <Text style={styles.ideaTitle}>Re:アイデアコントリ</Text>
       </View>
       <View>
         <Text style={styles.ideaName}>Tsutomu Nakayama</Text>
@@ -29,10 +29,10 @@ export default function IdeaCreateScreen(props) {
       <ScrollView style={styles.ideaBody}>
         <TextInput style={styles.ideaText1} />
       </ScrollView>
-      <StarButton
+      <RacketButton
         style={{ right: 40, top: 'auto', bottom: 0 }}
-        name="star"
-        onPress={() => { navigation.navigate('IdeaList'); }}
+        name="tennis"
+        onPress={() => { navigation.navigate('IdeaEdit'); }}
       />
     </View>
   );
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#ececec',
     borderTopWidth: 5,
-    borderTopColor: '#44b5fc',
+    borderTopColor: '#93aa16',
   },
   pageTop: {
     height: 50,
