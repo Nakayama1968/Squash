@@ -22,6 +22,9 @@ import IdeaSearchScreen from './src/screens/Tab/IdeaSearchScreen';
 import MemberSearchScreen from './src/screens/Tab/MemberSearchScreen';
 import MessageScreen from './src/screens/Tab/MessageScreen';
 import MessageEditScreen from './src/screens/Tab/MessageEditScreen';
+import PointScreen from './src/screens/Tab/PointScreen';
+import MyListScreen from './src/screens/Tab/MyListScreen';
+import HomeScreen from './src/screens/Tab/HomeScreen';
 
 import { firebaseConfig } from './env';
 
@@ -35,6 +38,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
+        // 最初に表示されるページの指定
         initialRouteName="IdeaList"
         screenOptions={{
           headerStyle: { backgroundColor: '#111111' },
@@ -62,6 +66,10 @@ export default function App() {
         <Stack.Screen name="MemberSearch" component={MemberSearchScreen} />
         <Stack.Screen name="Message" component={MessageScreen} />
         <Stack.Screen name="MessageEdit" component={MessageEditScreen} />
+        <Stack.Screen name="Point" component={PointScreen} />
+        <Stack.Screen name="MyList" component={MyListScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+
         <Stack.Screen
           name="LogIn"
           component={LogInScreen}

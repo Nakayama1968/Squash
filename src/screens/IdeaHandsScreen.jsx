@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 24,
     padding: 13,
-    scrooll: 'auto',
+    scroll: 'auto',
     borderRadius: 5,
   },
 });

@@ -21,7 +21,7 @@ export default function IdeaListScreen(props) {
       <View style={styles.container}>
         <AppBar />
         <View style={styles.pageTop}>
-          <Text style={styles.pageName}>NewIdea</Text>
+          <Text style={styles.pageName}>IdeaList</Text>
         </View>
         <IdeaCard />
         <StarButton
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ececec',
     borderTopWidth: 5,
-    borderTopColor: '#d8cbcb',
+    borderTopColor: '#9e887b',
   },
   pageTop: {
     height: 50,
@@ -72,8 +72,8 @@ const styles = StyleSheet.create({
   pageTitle: {
     position: 'absolute',
     top: 160,
-    paddingHorizontal: '5%',
+    paddingHorizontal: '8%',
     fontSize: 18,
-    fontStyle: 'bold',
+    fontWeight: 'bold',
   },
 });

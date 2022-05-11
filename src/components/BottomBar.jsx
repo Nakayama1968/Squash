@@ -29,21 +29,21 @@ export default function BottomBar(props) {
 
           <TouchableOpacity
             style={[styles.bottomNaviButton3, style]}
-            onPress={() => { navigation.navigate('IdeaList'); }}
+            onPress={() => { navigation.navigate('Point'); }}
           >
             <MaterialIcons name="pie-chart" size={26} color="#eeeeee" />
           </TouchableOpacity>
 
           <TouchableOpacity
             style={[styles.bottomNaviButton4, style]}
-            onPress={() => { navigation.navigate('IdeaList'); }}
+            onPress={() => { navigation.navigate('MyList'); }}
           >
             <FontAwesome5 name="list" size={26} color="#eeeeee" />
           </TouchableOpacity>
 
           <TouchableOpacity
             style={[styles.bottomNaviButton5, style]}
-            onPress={() => { navigation.navigate('IdeaList'); }}
+            onPress={() => { navigation.navigate('Home'); }}
           >
             <FontAwesome name="home" size={26} color="#eeeeee" />
           </TouchableOpacity>

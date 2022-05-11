@@ -69,8 +69,8 @@ const styles = StyleSheet.create({
   pageTitle: {
     position: 'absolute',
     top: 160,
-    paddingHorizontal: '5%',
+    paddingHorizontal: '8%',
     fontSize: 18,
-    fontStyle: 'bold',
+    fontWeight: 'bold',
   },
 });
