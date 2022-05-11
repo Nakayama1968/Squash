@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#ececec',
     borderTopWidth: 5,
-    borderTopColor: '#93aa16',
+    borderTopcolor: 'olivedrab',
   },
   pageTop: {
     height: 50,
@@ -89,7 +89,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 24,
     padding: 13,
-    scroll: 'auto',
     borderRadius: 5,
   },
 });

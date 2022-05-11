@@ -14,7 +14,6 @@ export default function BottomBar(props) {
       <View style={styles.BottomBar}>
         <View style={styles.BottomBarInner}>
           <TouchableOpacity
-            style={[styles.bottomNaviButton1, style]}
             onPress={() => { navigation.navigate('IdeaSearch'); }}
           >
             <FontAwesome name="search" size={26} color="#eeeeee" />
@@ -36,14 +35,14 @@ export default function BottomBar(props) {
 
           <TouchableOpacity
             style={[styles.bottomNaviButton4, style]}
-            onPress={() => { navigation.navigate('MyList'); }}
+            onPress={() => { navigation.navigate('MyProject'); }}
           >
             <FontAwesome5 name="list" size={26} color="#eeeeee" />
           </TouchableOpacity>
 
           <TouchableOpacity
             style={[styles.bottomNaviButton5, style]}
-            onPress={() => { navigation.navigate('Home'); }}
+            onPress={() => { navigation.navigate('MyHome'); }}
           >
             <FontAwesome name="home" size={26} color="#eeeeee" />
           </TouchableOpacity>

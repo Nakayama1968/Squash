@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   buttonContainer: {
-    backgroundColor: '#467FD3',
+    backgroundColor: 'deepskyblue',
     borderRadius: 4,
     alignSelf: 'flex-start',
     marginTop: 8,
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   footerLink: {
     fontSize: 14,
     lineHeight: 24,
-    color: '#467FD3',
+    color: 'deepskyblue',
   },
   footer: {
     flexDirection: 'row',

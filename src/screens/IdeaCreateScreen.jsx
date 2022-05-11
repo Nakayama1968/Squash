@@ -30,7 +30,7 @@ export default function IdeaCreateScreen(props) {
         <TextInput style={styles.ideaText1} />
       </ScrollView>
       <StarButton
-        style={{ right: 40, top: 'auto', bottom: 0 }}
+        style={{ left: 310, bottom: 40 }}
         name="star"
         onPress={() => { navigation.navigate('IdeaList'); }}
       />
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#ececec',
     borderTopWidth: 5,
-    borderTopColor: '#44b5fc',
+    borderTopColor: 'deepskyblue',
   },
   pageTop: {
     height: 50,
@@ -89,7 +89,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 24,
     padding: 13,
-    scroll: 'auto',
     borderRadius: 5,
   },
 });

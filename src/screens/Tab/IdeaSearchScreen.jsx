@@ -31,7 +31,7 @@ export default function IdeaSearchScreen(props) {
           onChangeText={(text) => { setSearch(text); }}
           autoCapitalize="none"
           placeholder="Search"
-          textContentType="string"
+          textContentType="none"
         />
         <IdeaCard />
         <View>

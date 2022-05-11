@@ -23,7 +23,7 @@ function RenderChart() {
       id: 1,
       name: 'Heart',
       //   icon: icons.Heart,
-      color: 'hotpink',
+      color: 'violet',
       points: [
         {
           id: 3,

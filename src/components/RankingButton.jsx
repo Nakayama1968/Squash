@@ -17,7 +17,7 @@ export default function RankingButton(prop) {
         style={[styles.RankingButton1, style]}
         onPress={() => { navigation.navigate('StarList'); }}
       >
-        <Ionicons name="star" size={26} color="#44b5fc" />
+        <Ionicons name="star" size={26} color="deepskyblue" />
       </TouchableOpacity>
 
       <TouchableOpacity

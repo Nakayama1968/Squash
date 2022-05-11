@@ -27,16 +27,12 @@ StarButton.defaultProps = {
 
 const styles = StyleSheet.create({
   StarButton: {
-    backgroundColor: '#44b5fc',
+    backgroundColor: 'deepskyblue',
     width: 40,
     height: 40,
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'absolute',
-    top: 'auto',
-    right: 210,
-    bottom: 85,
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.25,

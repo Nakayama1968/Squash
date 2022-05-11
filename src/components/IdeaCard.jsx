@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     width: 300,
     fontSize: 14,
     paddingHorizontal: '3%',
-    align: 'left',
+    textAlign: 'left',
     color: 'black',
   },
   ideaDate: {
@@ -155,10 +155,10 @@ const styles = StyleSheet.create({
     top: 4,
     paddingHorizontal: 10,
     fontSize: 9,
-    color: '#44B5fc',
+    color: 'deepskyblue',
   },
   ideaNext: {
-    align: 'right',
+    textAlign: 'right',
     padding: 8,
   },
 });

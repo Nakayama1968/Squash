@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ececec',
     borderTopWidth: 5,
-    borderTopColor: '#44b5fc',
+    borderTopColor: 'deepskyblue',
   },
   pageTop: {
     height: 50,

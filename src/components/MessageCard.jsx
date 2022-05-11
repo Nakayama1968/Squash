@@ -50,7 +50,7 @@ export default function MessageCard() {
           onPress={() => { navigation.navigate('MessageEdit'); }}
         >
           <View style={styles.avater}>
-            <FontAwesome name="user-circle" size={40} color="hotpink" />
+            <FontAwesome name="user-circle" size={40} color="violet" />
           </View>
           <View style={styles.profile}>
             <Text style={styles.memberName}>Minamoto Yoritomo</Text>
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     width: 300,
     fontSize: 14,
     paddingHorizontal: '3%',
-    align: 'left',
+    textAlign: 'left',
     color: 'black',
   },
   memberDate: {
@@ -144,6 +144,6 @@ const styles = StyleSheet.create({
     top: 4,
     paddingHorizontal: 10,
     fontSize: 9,
-    color: '#44B5fc',
+    color: 'deepskyblue',
   },
 });

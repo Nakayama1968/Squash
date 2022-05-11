@@ -31,7 +31,7 @@ export default function MessageScreen(props) {
           onChangeText={(text) => { setSearch(text); }}
           autoCapitalize="none"
           placeholder="Search"
-          textContentType="string"
+          textContentType="none"
         />
         <MessageCard />
         <View>

@@ -115,7 +115,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 24,
     padding: 13,
-    scroll: 'auto',
     borderRadius: 5,
   },
 });

@@ -28,16 +28,12 @@ HandsOnButton.defaultProps = {
 
 const styles = StyleSheet.create({
   handsonButton: {
-    backgroundColor: '#EB8e26',
+    backgroundColor: 'darkorange',
     width: 40,
     height: 40,
     borderRadius: 32,
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'absolute',
-    top: 'auto',
-    right: 30,
-    bottom: 85,
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.25,

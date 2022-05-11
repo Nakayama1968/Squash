@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ececec',
     borderTopWidth: 5,
-    borderTopColor: '#93aa16',
+    borderTopcolor: 'olivedrab',
   },
   pageTop: {
     height: 50,

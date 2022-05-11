@@ -27,16 +27,12 @@ RacketButton.defaultProps = {
 
 const styles = StyleSheet.create({
   RacketButton: {
-    backgroundColor: '#93aa16',
+    backgroundColor: 'olivedrab',
     width: 40,
     height: 40,
     borderRadius: 32,
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'absolute',
-    top: 'auto',
-    right: 90,
-    bottom: 85,
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.25,

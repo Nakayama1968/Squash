@@ -23,8 +23,8 @@ import MemberSearchScreen from './src/screens/Tab/MemberSearchScreen';
 import MessageScreen from './src/screens/Tab/MessageScreen';
 import MessageEditScreen from './src/screens/Tab/MessageEditScreen';
 import PointScreen from './src/screens/Tab/PointScreen';
-import MyListScreen from './src/screens/Tab/MyListScreen';
-import HomeScreen from './src/screens/Tab/HomeScreen';
+import MyProjectScreen from './src/screens/Tab/MyProjectScreen';
+import MyHomeScreen from './src/screens/Tab/MyHomeScreen';
 
 import { firebaseConfig } from './env';
 
@@ -67,8 +67,8 @@ export default function App() {
         <Stack.Screen name="Message" component={MessageScreen} />
         <Stack.Screen name="MessageEdit" component={MessageEditScreen} />
         <Stack.Screen name="Point" component={PointScreen} />
-        <Stack.Screen name="MyList" component={MyListScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="MyProject" component={MyProjectScreen} />
+        <Stack.Screen name="MyHome" component={MyHomeScreen} />
 
         <Stack.Screen
           name="LogIn"
