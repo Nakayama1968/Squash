@@ -31,7 +31,7 @@ export default function MemberSearchScreen(props) {
           onChangeText={(text) => { setSearch(text); }}
           autoCapitalize="none"
           placeholder="Search"
-          textContentType="string"
+          textContentType="none"
         />
         <MemberCard />
         <View>
