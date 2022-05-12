@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 // import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
 import IdeaCard from '../../components/IdeaCard';
@@ -11,10 +11,15 @@ import HandsOnButton from '../../components/HandsOnButton';
 import AppBar from '../../components/AppBar';
 import BottomBar from '../../components/BottomBar';
 import RankingButton from '../../components/RankingButton';
+import LogOutButton from '../../components/LogOutButton';
 
 export default function IdeaListScreen(props) {
-  // eslint-disable-next-line no-unused-vars
   const { navigation } = props;
+  useEffect(() => {
+    navigation.set0ptions({
+      headerRight: () => <LogOutButton />,
+    });
+  }, []);
 
   return (
     <>
