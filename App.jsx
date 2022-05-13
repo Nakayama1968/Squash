@@ -12,6 +12,7 @@ import IdeaEditScreen from './src/screens/IdeaEditScreen';
 import IdeaCreateScreen from './src/screens/IdeaCreateScreen';
 import LogInScreen from './src/screens/LogInScreen ';
 import SignUpScreen from './src/screens/SignUpScreen';
+
 import HeartListScreen from './src/screens/List/HeartListScreen';
 import ContriListScreen from './src/screens/List/ContriListScreen';
 import PracticeListScreen from './src/screens/List/PracticeListScreen';
@@ -28,11 +29,13 @@ import MyHomeScreen from './src/screens/Tab/MyHomeScreen';
 
 import { firebaseConfig } from './env';
 
-const Stack = createStackNavigator();
+require ('firebase/firestore');
 
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (

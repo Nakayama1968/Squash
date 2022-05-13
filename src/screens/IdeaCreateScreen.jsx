@@ -1,18 +1,40 @@
 /* eslint-disable react/prop-types */
 // import { number } from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View, ScrollView, Text, StyleSheet,
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
+import firebase from 'firebase';
 import AppBar from '../components/AppBar';
+import KeyboardSafeView from '../components/KeyboardSafeView ';
 
 import StarButton from '../components/StarButton';
 
 export default function IdeaCreateScreen(props) {
   const { navigation } = props;
+  const [bodyText, setBodyText] = useState('');
+
+  function handlePress() {
+    const { currentUser } = firebase.auth();
+    const db = firebase.firestore();
+    const ref = db.collection(`users/${currentUser.uid}/ideas`);
+    ref.add({
+      bodyText,
+      updatedAt: new (Date)(),
+    })
+      .then((docRef) => {
+        console.log('Created!', docRef.id);
+        navigation.goBack();
+      })
+      .catch((error) => {
+        console.log('Error!', error);
+      });
+  }
+
   return (
-    <View style={styles.container}>
+
+    <KeyboardSafeView style={styles.container}>
       <AppBar />
       <View style={styles.pageTop}>
         <Text style={styles.pageName}>IdeaCreate</Text>
@@ -21,20 +43,26 @@ export default function IdeaCreateScreen(props) {
         <Text style={styles.ideaDate}>2020年12月24日 11:00</Text>
       </View>
       <View>
-        <Text style={styles.ideaTitle}>Re:アイデアクリエイト</Text>
+        <Text style={styles.ideaTitle}>アイデアクリエイト</Text>
       </View>
       <View>
         <Text style={styles.ideaName}>Tsutomu Nakayama</Text>
       </View>
       <ScrollView style={styles.ideaBody}>
-        <TextInput style={styles.ideaText1} />
+        <TextInput
+          value={bodyText}
+          multiline
+          style={styles.ideaText1}
+          onChangeText={(text) => { setBodyText(text); }}
+          autoFocus
+        />
       </ScrollView>
       <StarButton
         style={{ left: 310, bottom: 40 }}
         name="star"
-        onPress={() => { navigation.navigate('IdeaList'); }}
+        onPress={handlePress}
       />
-    </View>
+    </KeyboardSafeView>
   );
 }
 
