@@ -26,7 +26,7 @@ export default function LogInScreen(props) {
       if (user) {
         navigation.reset({
           index: 0,
-          routes: [{ name: 'IdeaCard' }],
+          routes: [{ name: 'IdeaList' }],
         });
       }
     });
@@ -40,7 +40,7 @@ export default function LogInScreen(props) {
         console.log(user.uid);
         navigation.reset({
           index: 0,
-          routes: [{ name: 'IdeaCard' }],
+          routes: [{ name: 'IdeaList' }],
         });
       })
       .catch((error) => {

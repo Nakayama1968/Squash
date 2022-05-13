@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import firebase from 'firebase';
 
-import IdeaCard from '../../components/IdeaCard';
+import IdeaList from '../../components/IdeaList';
 import HeartButton from '../../components/HeartButton';
 import StarButton from '../../components/StarButton';
 import RacketButton from '../../components/RacketButton';
@@ -95,7 +95,7 @@ export default function IdeaListScreen(props) {
         <View style={styles.pageTop}>
           <Text style={styles.pageName}>IdeaList</Text>
         </View>
-        <IdeaCard />
+        <IdeaList />
         <StarButton
           name="star"
           onPress={() => { navigation.navigate('StarList'); }}

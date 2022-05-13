@@ -1,48 +1,55 @@
 /* eslint-disable react/prop-types */
 // import { number } from 'prop-types';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { shape, string } from 'prop-types';
 import {
   View, ScrollView, Text, StyleSheet,
 } from 'react-native';
+import firebase from 'firebase';
 import AppBar from '../components/AppBar';
 
 import HandsOnButton from '../components/HandsOnButton';
 import HeartButton from '../components/HeartButton';
 import RacketButton from '../components/RacketButton';
+import { dateToString } from '../utils';
 
 export default function IdeaDetailScreen(props) {
-  const { navigation } = props;
+  const { navigation, route } = props;
+  const { id } = route.params;
+  // console.log(id);
+  const [idea, setIdea] = useState(null);
+
+  useEffect(() => {
+    const { currentUser } = firebase.auth();
+    let unsubscribe = () => {};
+    if (currentUser) {
+      const db = firebase.firestore();
+      const ref = db.collection(`users/${currentUser.uid}/ideas`).doc(id);
+      unsubscribe = ref.onSnapshot((doc) => {
+        // console.log(doc.id, doc.data());
+        const data = doc.data();
+        setIdea({
+          id: doc.id,
+          bodyText: data.bodytext,
+          updatedAt: data.updateAt.toDate(),
+        });
+      });
+    }
+    return unsubscribe;
+  }, []);
+
   return (
     <View style={styles.container}>
       <AppBar />
       <View style={styles.pageTop}>
-        <Text style={styles.pageName}>IdeaDetail</Text>
-      </View>
-      <View>
-        <Text style={styles.ideaDate}>2020年12月24日 11:00</Text>
-      </View>
-      <View>
+        <Text style={styles.pageName} numberOflines={1}>{idea && idea.bodyText}</Text>
+        <Text style={styles.ideaDate}>{idea $$ dateToString(idea.updatedAt)}</Text>
         <Text style={styles.ideaTitle}>アイデアディテイル</Text>
-      </View>
-      <View>
         <Text style={styles.ideaName}>Tsutomu Nakayama</Text>
       </View>
       <ScrollView style={styles.ideaBody}>
         <Text style={styles.ideaText1}>
-          ここにはそれぞれの人のアイデアが表示されていきます。
-          長くなると自動にスクロールされます。
-          ここにはそれぞれの人のアイデアが表示されていきます。
-          長くなると自動にスクロールされます。
-          ここにはそれぞれの人のアイデアが表示されていきます。
-          長くなると自動にスクロールされます。
-          ここにはそれぞれの人のアイデアが表示されていきます。
-          長くなると自動にスクロールされます。
-          ここにはそれぞれの人のアイデアが表示されていきます。
-          長くなると自動にスクロールされます。
-          ここにはそれぞれの人のアイデアが表示されていきます。
-          長くなると自動にスクロールされます。
-          ここにはそれぞれの人のアイデアが表示されていきます。
-          長くなると自動にスクロールされます。
+          {idea && idea.bodyText}
         </Text>
       </ScrollView>
       <HeartButton
@@ -63,6 +70,12 @@ export default function IdeaDetailScreen(props) {
     </View>
   );
 }
+
+IdeaDetailScreen.propTypes = {
+  route: shape({
+    params: shape({ id: string }),
+  }).isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {

@@ -3,7 +3,7 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-import IdeaCard from '../../components/IdeaCard';
+import IdeaList from '../../components/IdeaList';
 // import HeartButton from '../../components/HeartButton';
 // import StarButton from '../../components/StarButton';
 // import RacketButton from '../../components/RacketButton';
@@ -24,7 +24,7 @@ export default function MyProjectScreen(props) {
         <View style={styles.pageTop}>
           <Text style={styles.pageName}>MyProject</Text>
         </View>
-        <IdeaCard />
+        <IdeaList />
         <StarCard />
 
         {/* <View style={{ display: 'flex', flexdirection: 'row', bottom: 40 }}>

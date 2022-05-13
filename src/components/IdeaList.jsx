@@ -12,7 +12,7 @@ import firebase from 'firebase';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { dateToString } from '../utils';
 
-export default function IdeaCard(props) {
+export default function IdeaList(props) {
   const { ideas } = props;
   const navigation = useNavigation();
 
@@ -43,15 +43,15 @@ export default function IdeaCard(props) {
     return (
       <View style={styles.baseStyle}>
         <TouchableOpacity
-          style={styles.IdeaCardItem}
-          onPress={() => { navigation.navigate('IdeaDetail'); }}
+          style={styles.IdeaListItem}
+          onPress={() => { navigation.navigate('IdeaDetail', { id: item.id }); }}
         >
           <View>
             <FontAwesome name="user-circle-o" size={40} color="gray" />
           </View>
           <View>
             <Text style={styles.ideaTitle} numberOfLines={1}>{item.bodeText}</Text>
-            <Text style={styles.ideaDate}>{String(item.updateAt)}</Text>
+            <Text style={styles.ideaDate}>{dateToString(item.updateAt)}</Text>
             <Text style={styles.ideaHash}>＃循環型 ＃水質 ＃森林</Text>
           </View>
           <TouchableOpacity
@@ -75,7 +75,7 @@ export default function IdeaCard(props) {
     </View>
   );
 }
-IdeaCard.propTypes = {
+IdeaList.propTypes = {
   ideas: arrayOf(shape({
     id: string,
     bodyText: string,
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
 
   },
-  IdeaCardItem: {
+  IdeaListItem: {
     width: '90%',
     height: 80,
     margin: 3,

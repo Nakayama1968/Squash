@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
 import { TextInput } from 'react-native-gesture-handler';
-import IdeaCard from '../../components/IdeaCard';
+import IdeaList from '../../components/IdeaList';
 // import StarButton from '../../components/StarButton';
 // import HeartButton from '../../components/HeartButton';
 // import RacketButton from '../../components/RacketButton';
@@ -33,7 +33,7 @@ export default function IdeaSearchScreen(props) {
           placeholder="Search"
           textContentType="none"
         />
-        <IdeaCard />
+        <IdeaList />
         <View>
           {/* <StarButton
             name="star"

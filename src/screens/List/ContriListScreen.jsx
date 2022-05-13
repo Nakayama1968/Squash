@@ -3,7 +3,7 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-import IdeaCard from '../../components/IdeaCard';
+import IdeaList from '../../components/IdeaList';
 // import HeartButton from '../../components/HeartButton';
 // import StarButton from '../../components/StarButton';
 // import RacketButton from '../../components/RacketButton';
@@ -23,8 +23,8 @@ export default function ContriListScreen(props) {
         <View style={styles.pageTop}>
           <Text style={styles.pageName}>ContributingRanking</Text>
         </View>
-        <IdeaCard />
-        <IdeaCard />
+        <IdeaList />
+        <IdeaList />
         {/* <StarButton
           name="star"
           onPress={() => { navigation.navigate('IdeaCreate'); }}
