@@ -16,6 +16,7 @@ import BottomBar from '../../components/BottomBar';
 import RankingButton from '../../components/RankingButton';
 // import LogOutButton from '../../components/LogOutButton';
 import Loading from '../../components/Loading';
+import HeaderRightButton from '../../components/HeaderRightButton';
 
 export default function IdeaListScreen(props) {
   const { navigation } = props;
@@ -52,6 +53,7 @@ export default function IdeaListScreen(props) {
         // 会員登録ボタン：匿名ユーザー
         // ログアウトボタン：メアド登録済ユーザー
         navigation.setOptions({
+          // eslint-disable-next-line react/no-unstable-nested-components
           headerRight: () => (
             <HeaderRightButton currentUser={user} cleanupFuncs={cleanupFuncs} />
           ),

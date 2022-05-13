@@ -44,7 +44,7 @@ export default function IdeaDetailScreen(props) {
       <View style={styles.pageTop}>
         <Text style={styles.pageName} numberOflines={1}>{idea && idea.bodyText}</Text>
         <Text style={styles.ideaDate}>{idea && dateToString(idea.updatedAt)}</Text>
-        <Text style={styles.ideaTitle}>アイデアディテイル</Text>
+        <Text style={styles.ideaTitle}>アイデアディテ-ル</Text>
         <Text style={styles.ideaName}>Tsutomu Nakayama</Text>
       </View>
       <ScrollView style={styles.ideaBody}>

@@ -122,8 +122,8 @@ function RenderChart() {
     const totalpointCount = 138;
     // chartData.reduce((a, b) => a + (b.pointCount || 0), 0);
 
-    console.log('Check Chart');
-    console.log(chartData);
+    // console.log('Check Chart');
+    // console.log(chartData);
 
     if (Platform.OS === 'ios') {
       return (

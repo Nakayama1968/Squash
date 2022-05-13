@@ -69,6 +69,7 @@ export default function IdeaList(props) {
     <View style={styles.container}>
       <Flatlist
         data={ideas}
+        // eslint-disable-next-line react/jsx-no-bind
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
       />

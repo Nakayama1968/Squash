@@ -63,6 +63,7 @@ export default function IdeaEditScreen(props) {
         <EditButton
           style={{ right: 40, top: 'auto', bottom: 0 }}
           name="refresh"
+          // eslint-disable-next-line react/jsx-no-bind
           onPress={handlePress}
         />
       </View>
