@@ -77,7 +77,7 @@ export default function IdeaListScreen(props) {
         <Loading isLoading={isLoading} />
         <View style={emptyStyles.inner}>
           <Text style={emptyStyles.title}>最初のメモを作成しよう！</Text>
-          <Button
+          <StarButton
             style={emptyStyles.button}
             label="作成する"
             onPress={() => { navigation.navigate('ideaCreate'); }}
@@ -87,15 +87,14 @@ export default function IdeaListScreen(props) {
     );
   }
 
-
   return (
-    <>
+    <View>
       <View style={styles.container}>
         <AppBar />
         <View style={styles.pageTop}>
           <Text style={styles.pageName}>IdeaList</Text>
         </View>
-        <IdeaList />
+        <IdeaList ideas={ideas} />
         <StarButton
           name="star"
           onPress={() => { navigation.navigate('StarList'); }}
@@ -118,8 +117,7 @@ export default function IdeaListScreen(props) {
       <View>
         <BottomBar />
       </View>
-
-    </>
+    </View>
   );
 }
 const styles = StyleSheet.create({
@@ -147,5 +145,23 @@ const styles = StyleSheet.create({
     paddingHorizontal: '8%',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+});
+const emptyStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  innner: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 18,
+    marginBottom: 24,
+  },
+  StarButton: {
+    alignSelf: 'center',
   },
 });
