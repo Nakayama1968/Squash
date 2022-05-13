@@ -1,48 +1,90 @@
 /* eslint-disable react/prop-types */
 // import { number } from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  View, ScrollView, Text, StyleSheet,
+  View, TextInput, StyleSheet, Alert, Text,
 } from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
+import { shape, string } from 'prop-types';
+import firebase from 'firebase';
+
+import KeyboardSafeView from '../components/KeyboardSafeView ';
+import { translateErrors } from '../utils';
+
 import AppBar from '../components/AppBar';
 
 import EditButton from '../components/EditButton';
 
 export default function IdeaEditScreen(props) {
-  const { navigation } = props;
+  const { navigation, route } = props;
+  const { id, bodyText } = route.paramas;
+  const [body, setBody] = useState(bodyText);
+
+  function handlePress() {
+    const { currentUser } = firebase.auth();
+    if (currentUser) {
+      const db = firebase.firestore();
+      const ref = db.collection(`users/${currentUser.uid}/ideas`).doc(id);
+      ref.set({
+        bodyText: body,
+        updatedAt: new Date(),
+      }, { merge: true })
+        .then(() => {
+          navigation.goBack();
+        })
+        .catch((error) => {
+          const errorMsg = translateErrors(error.code);
+          Alert.alert(errorMsg.title, errorMsg.description);
+        });
+    }
+  }
+
   return (
-    <View style={styles.container}>
-      <AppBar />
-      <View style={styles.pageTop}>
-        <Text style={styles.pageName}>IdeaEdit</Text>
+    <KeyboardSafeView style={styles.container}>
+      <View style={styles.container}>
+        <AppBar />
+        <View style={styles.pageTop}>
+          <Text style={styles.pageName}>IdeaEdit</Text>
+        </View>
+        <View>
+          <Text style={styles.ideaDate}>2020年12月24日 11:00</Text>
+        </View>
+        <View>
+          <Text style={styles.ideaTitle}>Re:アイデアエディット</Text>
+        </View>
+        <View>
+          <Text style={styles.ideaName}>Tsutomu Nakayama</Text>
+        </View>
+        <TextInput
+          value={body}
+          multiline
+          style={styles.ideaText1}
+          onChangeText={(text) => { setBody(text); }}
+        />
+        <EditButton
+          style={{ right: 40, top: 'auto', bottom: 0 }}
+          name="refresh"
+          onPress={handlePress}
+        />
       </View>
-      <View>
-        <Text style={styles.ideaDate}>2020年12月24日 11:00</Text>
-      </View>
-      <View>
-        <Text style={styles.ideaTitle}>Re:アイデアエディット</Text>
-      </View>
-      <View>
-        <Text style={styles.ideaName}>Tsutomu Nakayama</Text>
-      </View>
-      <ScrollView style={styles.ideaBody}>
-        <TextInput style={styles.ideaText1} />
-      </ScrollView>
-      <EditButton
-        style={{ right: 40, top: 'auto', bottom: 0 }}
-        name="refresh"
-        onPress={() => { navigation.navigate('IdeaList'); }}
-      />
-    </View>
+    </KeyboardSafeView>
   );
 }
 
+IdeaEditScreen.propTypes = {
+  route: shape({
+    params: shape({ id: string, bodeText: string }),
+  }).isRequired,
+};
+
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: '#ececec',
     borderTopWidth: 5,
     borderTopColor: '#26cb78',
+  },
+  inputContainer: {
+    flex: 1,
   },
   pageTop: {
     height: 50,

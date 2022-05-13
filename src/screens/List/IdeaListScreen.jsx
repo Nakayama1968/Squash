@@ -14,7 +14,7 @@ import HandsOnButton from '../../components/HandsOnButton';
 import AppBar from '../../components/AppBar';
 import BottomBar from '../../components/BottomBar';
 import RankingButton from '../../components/RankingButton';
-import LogOutButton from '../../components/LogOutButton';
+// import LogOutButton from '../../components/LogOutButton';
 import Loading from '../../components/Loading';
 
 export default function IdeaListScreen(props) {
