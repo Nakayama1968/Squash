@@ -29,7 +29,7 @@ import MyHomeScreen from './src/screens/Tab/MyHomeScreen';
 
 import { firebaseConfig } from './env';
 
-require ('firebase/firestore');
+require('firebase/firestore');
 
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);

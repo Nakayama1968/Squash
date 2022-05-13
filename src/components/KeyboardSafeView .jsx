@@ -13,8 +13,8 @@ export default function KeyboardSafeView({ children, style }) {
     Keyboard.addListener('keyboardDidShow', handleShow);
     Keyboard.addListener('keyboardDidHide', handleHide);
     return () => {
-      Keyboard.removeListener('keyboardDidShow', handleShow);
-      Keyboard.removeListener('keyboardDidHide', handleHide);
+      Keyboard.remove('keyboardDidShow', handleShow);
+      Keyboard.remove('keyboardDidHide', handleHide);
     };
   }, []);
 

@@ -60,6 +60,7 @@ export default function IdeaCreateScreen(props) {
       <StarButton
         style={{ left: 310, bottom: 40 }}
         name="star"
+        // eslint-disable-next-line react/jsx-no-bind
         onPress={handlePress}
       />
     </KeyboardSafeView>

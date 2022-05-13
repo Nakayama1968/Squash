@@ -1,7 +1,10 @@
 /* eslint-disable react/prop-types */
 // import { StatusBar } from 'expo-status-bar';
-import React, { useEffect } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import {
+  StyleSheet, View, Text, Alert,
+} from 'react-native';
+import firebase from 'firebase';
 
 import IdeaCard from '../../components/IdeaCard';
 import HeartButton from '../../components/HeartButton';
@@ -12,14 +15,78 @@ import AppBar from '../../components/AppBar';
 import BottomBar from '../../components/BottomBar';
 import RankingButton from '../../components/RankingButton';
 import LogOutButton from '../../components/LogOutButton';
+import Loading from '../../components/Loading';
 
 export default function IdeaListScreen(props) {
   const { navigation } = props;
+  const [ideas, setIdeas] = useState([]);
+  const [isLoading, setLoading] = useState(false);
+
   useEffect(() => {
-    navigation.set0ptions({
-      headerRight: () => <LogOutButton />,
+    setLoading(true);
+
+    const cleanupFuncs = {
+      auth: () => {},
+      ideas: () => {},
+    };
+    cleanupFuncs.auth = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        const db = firebase.firestore();
+        const ref = db.collection(`users/${user.uid}/ideas`).orderBy('updatedAt', 'desc');
+        cleanupFuncs.ideas = ref.onSnapshot((snapshot) => {
+          const userIdeas = [];
+          snapshot.forEach((doc) => {
+            const data = doc.data();
+            userIdeas.push({
+              id: doc.id,
+              bodyText: data.bodyText,
+              updatedAt: data.updatedAt.toDate(),
+            });
+          });
+          setIdeas(userIdeas);
+          setLoading(false);
+        }, () => {
+          setLoading(false);
+        });
+        // ユーザーが存在したら会員登録ボタンかログアウトボタンを表示
+        // 会員登録ボタン：匿名ユーザー
+        // ログアウトボタン：メアド登録済ユーザー
+        navigation.setOptions({
+          headerRight: () => (
+            <HeaderRightButton currentUser={user} cleanupFuncs={cleanupFuncs} />
+          ),
+        });
+      } else {
+        // 匿名ログイン（firebaseの Authentication > Sign-in method から有効にする必要があります）
+        firebase.auth().signInAnonymously()
+          .catch(() => {
+            Alert.alert('エラー', 'アプリを再起動してください');
+          })
+          .then(() => { setLoading(false); });
+      }
     });
+    return () => {
+      cleanupFuncs.auth();
+      cleanupFuncs.ideas();
+    };
   }, []);
+
+  if (ideas.length === 0) {
+    return (
+      <View style={emptyStyles.container}>
+        <Loading isLoading={isLoading} />
+        <View style={emptyStyles.inner}>
+          <Text style={emptyStyles.title}>最初のメモを作成しよう！</Text>
+          <Button
+            style={emptyStyles.button}
+            label="作成する"
+            onPress={() => { navigation.navigate('ideaCreate'); }}
+          />
+        </View>
+      </View>
+    );
+  }
+
 
   return (
     <>
