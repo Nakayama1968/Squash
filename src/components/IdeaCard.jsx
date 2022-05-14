@@ -12,7 +12,7 @@ import firebase from 'firebase';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { dateToString } from '../utils';
 
-export default function IdeaList(props) {
+export default function IdeaCard(props) {
   const { ideas } = props;
   const navigation = useNavigation();
 
@@ -43,7 +43,7 @@ export default function IdeaList(props) {
     return (
       <View style={styles.baseStyle}>
         <TouchableOpacity
-          style={styles.IdeaListItem}
+          style={styles.IdeaCardItem}
           onPress={() => { navigation.navigate('IdeaDetail', { id: item.id }); }}
         >
           <View>
@@ -76,7 +76,7 @@ export default function IdeaList(props) {
     </View>
   );
 }
-IdeaList.propTypes = {
+IdeaCard.propTypes = {
   ideas: arrayOf(shape({
     id: string,
     bodyText: string,
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
 
   },
-  IdeaListItem: {
+  IdeaCardItem: {
     width: '90%',
     height: 80,
     margin: 3,

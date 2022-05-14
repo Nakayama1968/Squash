@@ -3,7 +3,7 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-import IdeaList from '../../components/IdeaList';
+import IdeaCard from '../../components/IdeaCard';
 import AppBar from '../../components/AppBar';
 import BottomBar from '../../components/BottomBar';
 import RankingButton from '../../components/RankingButton';
@@ -19,8 +19,8 @@ export default function HeartListScreen(props) {
         <View style={styles.pageTop}>
           <Text style={styles.pageName}>HeartRanking</Text>
         </View>
-        <IdeaList />
-        <IdeaList />
+        <IdeaCard />
+        <IdeaCard />
         <RankingButton
           name="star"
           onPress={() => { navigation.navigate('StarList'); }}
