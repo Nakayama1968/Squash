@@ -7,49 +7,44 @@ import {
 import firebase from 'firebase';
 
 import Button from '../components/Button';
+import Loading from '../components/Loading';
+import { translateErrors } from '../utils';
+import CancelLogIn from '../components/CancelLogIn';
 
 export default function LogInScreen(props) {
   const { navigation } = props;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  // UseEffectの動作をログで観察
-  // useEffect(() => {
-  //   console.log('useEffect!');
-  //   return () => {
-  //     console.log('Unmount!');
-  //   };
-  // }, []);
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        navigation.reset({
-          index: 0,
-          routes: [{ name: 'IdeaList' }],
-        });
-      }
+    navigation.setOptions({
+      // eslint-disable-next-line react/no-unstable-nested-components
+      headerRight: () => <CancelLogIn />,
     });
-    return unsubscribe;
   }, []);
 
   function handlePress() {
+    setLoading(true);
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        const { user } = userCredential;
-        console.log(user.uid);
+      .then(() => {
         navigation.reset({
           index: 0,
           routes: [{ name: 'IdeaList' }],
         });
       })
       .catch((error) => {
-        Alert.alert(error.code);
+        const errorMsg = translateErrors(error.code);
+        Alert.alert(errorMsg.title, errorMsg.description);
+      })
+      .then(() => {
+        setLoading(false);
       });
   }
 
   return (
     <View style={styles.container}>
+      <Loading isLoading={isLoading} />
       <View style={styles.inner}>
         <Text style={styles.title}>Log In</Text>
         <TextInput

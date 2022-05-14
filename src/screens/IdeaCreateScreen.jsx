@@ -2,7 +2,7 @@
 // import { number } from 'prop-types';
 import React, { useState } from 'react';
 import {
-  View, ScrollView, Text, StyleSheet,
+  View, ScrollView, Text, StyleSheet, Alert,
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import firebase from 'firebase';
@@ -10,6 +10,7 @@ import AppBar from '../components/AppBar';
 import KeyboardSafeView from '../components/KeyboardSafeView ';
 
 import StarButton from '../components/StarButton';
+import { translateErrors } from '../utils';
 
 export default function IdeaCreateScreen(props) {
   const { navigation } = props;
@@ -23,12 +24,12 @@ export default function IdeaCreateScreen(props) {
       bodyText,
       updatedAt: new (Date)(),
     })
-      .then((docRef) => {
-        console.log('Created!', docRef.id);
+      .then(() => {
         navigation.goBack();
       })
       .catch((error) => {
-        console.log('Error!', error);
+        const errorMsg = translateErrors(error.code);
+        Alert.alert(errorMsg.title, errorMsg.description);
       });
   }
 
