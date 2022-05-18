@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   },
   pageName: {
     color: '#333333',
-    paddingHorizontal: 26,
+    paddingHorizontal: 23,
     fontSize: 20,
     lineHeight: 50,
     fontWeight: 'bold',

@@ -9,7 +9,7 @@ import AppBar from '../components/AppBar';
 
 import RacketButton from '../components/RacketButton';
 
-export default function IdeaDetailScreen(props) {
+export default function IdeaContriScreen(props) {
   const { navigation } = props;
   return (
     <View style={styles.container}>
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   },
   pageName: {
     color: '#333333',
-    paddingHorizontal: 26,
+    paddingHorizontal: 23,
     fontSize: 20,
     lineHeight: 50,
     fontWeight: 'bold',
@@ -62,11 +62,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 30,
     justifyContent: 'center',
-    paddingHorizontal: 28,
+    paddingHorizontal: 20,
   },
   ideaTitle: {
     color: '#333333',
-    paddingHorizontal: 26,
+    paddingHorizontal: 23,
     fontSize: 18,
     lineHeight: 40,
     fontWeight: 'bold',

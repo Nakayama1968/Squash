@@ -37,7 +37,7 @@ HeaderRightButton.propTypes = {
   currentUser: shape().isRequired,
   cleanupFuncs: shape({
     auth: func,
-    memos: func,
+    ideas: func,
   }).isRequired,
 };
 

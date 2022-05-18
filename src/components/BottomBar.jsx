@@ -27,17 +27,17 @@ export default function BottomBar(props) {
           </TouchableOpacity>
 
           <TouchableOpacity
+            style={[styles.bottomNaviButton4, style]}
+            onPress={() => { navigation.navigate('MyGoing'); }}
+          >
+            <FontAwesome5 name="list" size={26} color="#eeeeee" />
+          </TouchableOpacity>
+
+          <TouchableOpacity
             style={[styles.bottomNaviButton3, style]}
             onPress={() => { navigation.navigate('Point'); }}
           >
             <MaterialIcons name="pie-chart" size={26} color="#eeeeee" />
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={[styles.bottomNaviButton4, style]}
-            onPress={() => { navigation.navigate('MyProject'); }}
-          >
-            <FontAwesome5 name="list" size={26} color="#eeeeee" />
           </TouchableOpacity>
 
           <TouchableOpacity

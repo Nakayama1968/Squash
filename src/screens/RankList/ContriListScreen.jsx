@@ -1,24 +1,20 @@
-/* eslint-disable react/prop-types */
-// import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import {
   StyleSheet, View, Text, Alert,
 } from 'react-native';
+
 import firebase from 'firebase';
 
-import IdeaCard from '../../components/IdeaCard';
-import HeartButton from '../../components/HeartButton';
-import StarButton from '../../components/StarButton';
-import RacketButton from '../../components/RacketButton';
-import HandsOnButton from '../../components/HandsOnButton';
+// import Button from '../../components/Button';
 import AppBar from '../../components/AppBar';
 import BottomBar from '../../components/BottomBar';
 import RankingButton from '../../components/RankingButton';
-// import LogOutButton from '../../components/LogOutButton';
+import ContCard from '../../components/Card/ContCard';
 import Loading from '../../components/Loading';
 import HeaderRightButton from '../../components/HeaderRightButton';
 
-export default function IdeaListScreen(props) {
+export default function ContriListScreen(props) {
+  // eslint-disable-next-line no-unused-vars
   const { navigation } = props;
   const [ideas, setIdeas] = useState([]);
   const [isLoading, setLoading] = useState(false);
@@ -62,7 +58,7 @@ export default function IdeaListScreen(props) {
         // 匿名ログイン（firebaseの Authentication > Sign-in method から有効にする必要があります）
         firebase.auth().signInAnonymously()
           .catch(() => {
-            Alert.alert('エラー', 'アプリを再起動してください');
+            Alert.alert('エラー', 'ログインして下さい');
           })
           .then(() => { setLoading(false); });
       }
@@ -77,49 +73,35 @@ export default function IdeaListScreen(props) {
     return (
       <View style={emptyStyles.container}>
         <Loading isLoading={isLoading} />
-        <View style={emptyStyles.inner}>
-          <Text style={emptyStyles.title}>最初のメモを作成しよう！</Text>
-          <StarButton
+        {/* <View style={emptyStyles.inner}>
+          <Text style={emptyStyles.title}>最初のアイデアを登録しよう！</Text>
+          <Button
             style={emptyStyles.button}
-            label="作成する"
-            onPress={() => { navigation.navigate('ideaCreate'); }}
+            label="登録する"
+            onPress={() => { navigation.navigate('IdeaCreate'); }}
           />
-        </View>
+        </View> */}
       </View>
     );
   }
 
   return (
-    <View>
+    <>
       <View style={styles.container}>
         <AppBar />
         <View style={styles.pageTop}>
-          <Text style={styles.pageName}>IdeaList</Text>
+          <Text style={styles.pageName}>ContributeRanking</Text>
         </View>
-        <IdeaCard ideas={ideas} />
-        <StarButton
-          name="star"
-          onPress={() => { navigation.navigate('StarList'); }}
-        />
-        <HeartButton
-          name="heart"
-          onPress={() => { navigation.navigate('HeartList'); }}
-        />
-        <RacketButton
-          name="tennis"
-          onPress={() => { navigation.navigate('ContriList'); }}
-        />
-        <HandsOnButton
-          name="people"
-          onPress={() => { navigation.navigate('PracticeList'); }}
-        />
+        <View style={styles.baseStyle}>
+          <ContCard ideas={ideas} />
+        </View>
         <RankingButton />
-        <Text style={styles.pageTitle}>新着アイデア</Text>
+        <Text style={styles.pageTitle}>貢献ランキング</Text>
       </View>
       <View>
         <BottomBar />
       </View>
-    </View>
+    </>
   );
 }
 const styles = StyleSheet.create({
@@ -127,7 +109,19 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ececec',
     borderTopWidth: 5,
-    borderTopColor: '#9e887b',
+    borderTopColor: 'olivedrab',
+  },
+  baseStyle: {
+    backgroundColor: '#fcfcfc',
+    top: 30,
+    width: '94%',
+    paddingTop: 70,
+    left: '3%',
+    right: '3%',
+    height: 'auto',
+    paddingBottom: 30,
+    justifyContent: 'top',
+    borderRadius: 8,
   },
   pageTop: {
     height: 50,
@@ -136,7 +130,7 @@ const styles = StyleSheet.create({
   },
   pageName: {
     color: '#333333',
-    paddingHorizontal: 26,
+    paddingHorizontal: 23,
     fontSize: 20,
     lineHeight: 50,
     fontWeight: 'bold',
@@ -155,7 +149,7 @@ const emptyStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  innner: {
+  inner: {
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -163,7 +157,7 @@ const emptyStyles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 24,
   },
-  StarButton: {
+  button: {
     alignSelf: 'center',
   },
 });

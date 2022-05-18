@@ -1,40 +1,71 @@
 /* eslint-disable react/prop-types */
 // import { number } from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  View, ScrollView, Text, StyleSheet,
+  View, ScrollView, Text, StyleSheet, Alert,
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
-import AppBar from '../components/AppBar';
+import firebase from 'firebase';
 
-import HandsOnButton from '../components/HandsOnButton';
+import AppBar from '../../components/AppBar';
+import KeyboardSafeView from '../../components/KeyboardSafeView ';
 
-export default function IdeaHandsScreen(props) {
+import StarButton from '../../components/StarButton';
+import { translateErrors } from '../../utils';
+
+export default function IdeaCreateScreen(props) {
   const { navigation } = props;
+  const [bodyText, setBodyText] = useState('');
+
+  function handlePress() {
+    const { currentUser } = firebase.auth();
+    const db = firebase.firestore();
+    const ref = db.collection(`users/${currentUser.uid}/ideas`);
+    ref.add({
+      bodyText,
+      updatedAt: new (Date)(),
+    })
+      .then(() => {
+        navigation.goBack();
+      })
+      .catch((error) => {
+        const errorMsg = translateErrors(error.code);
+        Alert.alert(errorMsg.title, errorMsg.description);
+      });
+  }
+
   return (
-    <View style={styles.container}>
+
+    <KeyboardSafeView style={styles.container}>
       <AppBar />
       <View style={styles.pageTop}>
-        <Text style={styles.pageName}>IdeaHands</Text>
+        <Text style={styles.pageName}>IdeaCreate</Text>
       </View>
       <View>
         <Text style={styles.ideaDate}>2020年12月24日 11:00</Text>
       </View>
       <View>
-        <Text style={styles.ideaTitle}>Re:アイデアハンズ</Text>
+        <Text style={styles.ideaTitle}>アイデアクリエイト</Text>
       </View>
       <View>
         <Text style={styles.ideaName}>Tsutomu Nakayama</Text>
       </View>
       <ScrollView style={styles.ideaBody}>
-        <TextInput style={styles.ideaText1} />
+        <TextInput
+          value={bodyText}
+          multiline
+          style={styles.ideaText1}
+          onChangeText={(text) => { setBodyText(text); }}
+          autoFocus
+        />
       </ScrollView>
-      <HandsOnButton
-        style={{ right: 40, top: 'auto', bottom: 0 }}
-        name="people"
-        onPress={() => { navigation.navigate('IdeaList'); }}
+      <StarButton
+        style={{ left: 310, bottom: 40 }}
+        name="star"
+        // eslint-disable-next-line react/jsx-no-bind
+        onPress={handlePress}
       />
-    </View>
+    </KeyboardSafeView>
   );
 }
 
@@ -42,7 +73,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#ececec',
     borderTopWidth: 5,
-    borderTopColor: '#Eb8e26',
+    borderTopColor: 'deepskyblue',
   },
   pageTop: {
     height: 50,

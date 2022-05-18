@@ -6,26 +6,33 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import firebase from 'firebase';
 
-import IdeaListScreen from './src/screens/List/IdeaListScreen';
+import IdeaListScreen from './src/screens/RankList/IdeaListScreen';
 import IdeaDetailScreen from './src/screens/IdeaDetailScreen';
 import IdeaEditScreen from './src/screens/IdeaEditScreen';
-import IdeaCreateScreen from './src/screens/IdeaCreateScreen';
+import IdeaCreateScreen from './src/screens/Top/IdeaCreateScreen';
 import LogInScreen from './src/screens/LogInScreen ';
 import SignUpScreen from './src/screens/SignUpScreen';
 
-import HeartListScreen from './src/screens/List/HeartListScreen';
-import ContriListScreen from './src/screens/List/ContriListScreen';
-import PracticeListScreen from './src/screens/List/PracticeListScreen';
-import StarListScreen from './src/screens/List/StarListScreen';
+import HeartListScreen from './src/screens/RankList/HeartListScreen';
+import ContriListScreen from './src/screens/RankList/ContriListScreen';
+import PracticeListScreen from './src/screens/RankList/PracticeListScreen';
+import StarListScreen from './src/screens/RankList/StarListScreen';
 import IdeaContriScreen from './src/screens/IdeaContriScreen';
 import IdeaHandsScreen from './src/screens/IdeaHandsScreen';
 import IdeaSearchScreen from './src/screens/Tab/IdeaSearchScreen';
 import MemberSearchScreen from './src/screens/Tab/MemberSearchScreen';
-import MessageScreen from './src/screens/Tab/MessageScreen';
-import MessageEditScreen from './src/screens/Tab/MessageEditScreen';
+import MessageScreen from './src/screens/Top/MessageScreen';
+import MessageEditScreen from './src/screens/Top/MessageEditScreen';
 import PointScreen from './src/screens/Tab/PointScreen';
-import MyProjectScreen from './src/screens/Tab/MyProjectScreen';
+import MyGoingScreen from './src/screens/Tab/MyGoingScreen';
 import MyHomeScreen from './src/screens/Tab/MyHomeScreen';
+import IdeaPracticeScreen from './src/screens/IdeaPracticeScreen';
+import MyProjectScreen from './src/screens/MyList/MyProjectScreen';
+import HeartProjectScreen from './src/screens/MyList/HeartProjectScreen';
+import ContriProjectScreen from './src/screens/MyList/ContriProjectScreen';
+import PracticeProjectScreen from './src/screens/MyList/PracticeProjectScreen';
+import ContriCreateScreen from './src/screens/Top/ContriCreateScreen';
+import PractCreateScreen from './src/screens/Top/PractCreateScreen';
 
 import { firebaseConfig } from './env';
 
@@ -43,7 +50,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator
         // 最初に表示されるページの指定
-        initialRouteName="MyHome"
+        initialRouteName="IdeaList"
         screenOptions={{
           headerStyle: { backgroundColor: '#111111' },
           headerTitleStyle: { color: '#ffffff', fontSize: 24 },
@@ -71,8 +78,15 @@ export default function App() {
         <Stack.Screen name="Message" component={MessageScreen} />
         <Stack.Screen name="MessageEdit" component={MessageEditScreen} />
         <Stack.Screen name="Point" component={PointScreen} />
-        <Stack.Screen name="MyProject" component={MyProjectScreen} />
+        <Stack.Screen name="MyGoing" component={MyGoingScreen} />
         <Stack.Screen name="MyHome" component={MyHomeScreen} />
+        <Stack.Screen name="IdeaPractice" component={IdeaPracticeScreen} />
+        <Stack.Screen name="MyProject" component={MyProjectScreen} />
+        <Stack.Screen name="HeartProject" component={HeartProjectScreen} />
+        <Stack.Screen name="ContriProject" component={ContriProjectScreen} />
+        <Stack.Screen name="PracticeProject" component={PracticeProjectScreen} />
+        <Stack.Screen name="ContriCreate" component={ContriCreateScreen} />
+        <Stack.Screen name="PractCreate" component={PractCreateScreen} />
 
         <Stack.Screen
           name="LogIn"

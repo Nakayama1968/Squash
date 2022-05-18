@@ -21,15 +21,17 @@ Button.defaultProps = {
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    backgroundColor: 'deepskyblue',
+    width: '40%',
+    backgroundColor: 'navy',
     borderRadius: 4,
-    alignSelf: 'flex-start',
     marginTop: 8,
     marginBottom: 24,
   },
   buttonLabel: {
     fontSize: 16,
+    fontWeight: 'bold',
     lineHeight: 32,
+    alignSelf: 'center',
     paddingHorizontal: 32,
     paddingVertical: 8,
     color: '#ffffff',

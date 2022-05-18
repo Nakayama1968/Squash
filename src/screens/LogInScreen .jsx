@@ -1,5 +1,8 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react';
+import React, {
+  useState,
+  // useEffect,
+} from 'react';
 import {
   View, Text, TextInput, StyleSheet, TouchableOpacity, Alert,
 } from 'react-native';
@@ -9,7 +12,7 @@ import firebase from 'firebase';
 import Button from '../components/Button';
 import Loading from '../components/Loading';
 import { translateErrors } from '../utils';
-import CancelLogIn from '../components/CancelLogIn';
+// import CancelLogIn from '../components/CancelLogIn';
 
 export default function LogInScreen(props) {
   const { navigation } = props;
@@ -17,12 +20,12 @@ export default function LogInScreen(props) {
   const [password, setPassword] = useState('');
   const [isLoading, setLoading] = useState(false);
 
-  useEffect(() => {
-    navigation.setOptions({
-      // eslint-disable-next-line react/no-unstable-nested-components
-      headerRight: () => <CancelLogIn />,
-    });
-  }, []);
+  // useEffect(() => {
+  //   navigation.setOptions({
+  //     // eslint-disable-next-line react/no-unstable-nested-components
+  //     headerRight: () => <CancelLogIn />,
+  //   });
+  // }, []);
 
   function handlePress() {
     setLoading(true);
@@ -52,6 +55,7 @@ export default function LogInScreen(props) {
           value={email}
           onChangeText={(text) => { setEmail(text); }}
           autoCapitalize="none"
+          autoFocus
           keyboardType="email-address"
           placeholder="Email Address"
           textContentType="emailAddress"
@@ -112,20 +116,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     marginTop: 8,
     marginBottom: 8,
-  },
-  buttonContainer: {
-    backgroundColor: 'deepskyblue',
-    borderRadius: 4,
-    alignSelf: 'flex-start',
-    marginTop: 8,
-    marginBottom: 24,
-  },
-  buttonLabel: {
-    fontSize: 16,
-    lineHeight: 32,
-    paddingHorizontal: 32,
-    paddingVertical: 8,
-    color: '#ffffff',
   },
   footerText: {
     fontSize: 14,

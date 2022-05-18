@@ -12,10 +12,12 @@ export default function KeyboardSafeView({ children, style }) {
   useEffect(() => {
     Keyboard.addListener('keyboardDidShow', handleShow);
     Keyboard.addListener('keyboardDidHide', handleHide);
-    return () => {
-      Keyboard.remove('keyboardDidShow', handleShow);
-      Keyboard.remove('keyboardDidHide', handleHide);
-    };
+    // eslint-disable-next-line no-undef
+    return () => listener.remove();
+    // {
+    //   Keyboard.removeListener('keyboardDidShow', handleShow);
+    //   Keyboard.removeListener('keyboardDidHide', handleHide);
+    // };
   }, []);
 
   useEffect(() => {

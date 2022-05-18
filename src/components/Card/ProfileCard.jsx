@@ -5,10 +5,11 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome } from '@expo/vector-icons';
-import StarButton from './StarButton';
-import HeartButton from './HeartButton';
-import RacketButton from './RacketButton';
-import HandsOnButton from './HandsOnButton';
+
+import HeartButton from '../HeartButton';
+import RacketButton from '../RacketButton';
+import HandsOnButton from '../HandsOnButton';
+import StarButton from '../StarButton';
 
 export default function ProfileCard() {
   const navigation = useNavigation();

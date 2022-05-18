@@ -1,13 +1,16 @@
-/* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react';
+import React, {
+  useState,
+  // useEffect,
+} from 'react';
 import {
-  View, Text, TextInput, StyleSheet, TouchableOpacity, Alert,
+  View, Text, TextInput, StyleSheet, TouchableOpacity,
+  Alert,
 } from 'react-native';
 import firebase from 'firebase';
 
 import Button from '../components/Button';
 import Loading from '../components/Loading';
-import CancelLogIn from '../components/CancelLogIn';
+// import CancelLogIn from '../components/CancelLogIn';
 import { translateErrors } from '../utils';
 
 export default function SignUpScreen(props) {
@@ -16,12 +19,14 @@ export default function SignUpScreen(props) {
   const [password, setPassword] = useState('');
   const [isLoading, setLoading] = useState(false);
 
-  useEffect(() => {
-    navigation.setOptions({
-      // eslint-disable-next-line react/no-unstable-nested-components
-      headerRight: () => <CancelLogIn />,
-    });
-  }, []);
+  // useEffect(() => {
+  //   navigation.setOptions({
+  //     // eslint-disable-next-line react/no-unstable-nested-components
+  //     headerRight() {
+  //       return <CancelLogIn />;
+  //     },
+  //   });
+  // }, []);
 
   function handlePress() {
     setLoading(true);
@@ -34,7 +39,7 @@ export default function SignUpScreen(props) {
           {
             text: 'OK',
             onPress: () => {
-              navigation.reset({ index: 0, routes: [{ name: 'MemoList' }] });
+              navigation.reset({ index: 0, routes: [{ name: 'ideaList' }] });
             },
           },
         ]);
@@ -61,6 +66,7 @@ export default function SignUpScreen(props) {
           keyboardType="email-address"
           placeholder="Email Address"
           textContentType="emailAddress"
+          autoFocus
         />
         <TextInput
           style={styles.input}
@@ -72,7 +78,7 @@ export default function SignUpScreen(props) {
           textContentType="password"
         />
         <Button
-          label="submit"
+          label="Submit"
           // eslint-disable-next-line react/jsx-no-bind
           onPress={handlePress}
         />
@@ -86,7 +92,7 @@ export default function SignUpScreen(props) {
               });
             }}
           >
-            <Text style={styles.footerLink}>Log in</Text>
+            <Text style={styles.footerLink}>Log In.</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -97,51 +103,36 @@ export default function SignUpScreen(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#F0F4F8',
   },
   inner: {
-    paddingHorizontal: 30,
-    paddingVertical: 30,
-
+    paddingHorizontal: 27,
+    paddingVertical: 24,
   },
   title: {
     fontSize: 24,
-    lineHeight: 36,
+    lineHeight: 32,
     fontWeight: 'bold',
+    marginBottom: 24,
   },
   input: {
     fontSize: 16,
     height: 48,
-    borderColor: '#dddddd',
+    borderColor: '#DDDDDD',
     borderWidth: 1,
     backgroundColor: '#ffffff',
     paddingHorizontal: 8,
-    marginTop: 8,
-    marginBottom: 8,
-  },
-  buttonContainer: {
-    backgroundColor: 'deepskyblue',
-    borderRadius: 4,
-    alignSelf: 'flex-start',
-    marginTop: 8,
-    marginBottom: 24,
-  },
-  buttonLabel: {
-    fontSize: 16,
-    lineHeight: 32,
-    paddingHorizontal: 32,
-    paddingVertical: 8,
-    color: '#ffffff',
+    marginBottom: 16,
   },
   footerText: {
     fontSize: 14,
     lineHeight: 24,
-    marginRight: 12,
+    marginRight: 8,
   },
   footerLink: {
     fontSize: 14,
     lineHeight: 24,
-    color: 'deepskyblue',
+    color: '#467FD3',
   },
   footer: {
     flexDirection: 'row',

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
 import { TextInput } from 'react-native-gesture-handler';
-import MessageCard from '../../components/MessageCard';
+import ContCard from '../../components/Card/ContCard';
 // import StarButton from '../../components/StarButton';
 // import HeartButton from '../../components/HeartButton';
 // import RacketButton from '../../components/RacketButton';
@@ -13,7 +13,7 @@ import MessageCard from '../../components/MessageCard';
 import AppBar from '../../components/AppBar';
 import BottomBar from '../../components/BottomBar';
 
-export default function MessageScreen(props) {
+export default function ContriProjectScreen(props) {
   // eslint-disable-next-line no-unused-vars
   const { navigation } = props;
   const [search, setSearch] = useState('');
@@ -23,7 +23,7 @@ export default function MessageScreen(props) {
       <View style={styles.container}>
         <AppBar />
         <View style={styles.pageTop}>
-          <Text style={styles.pageName}>Message</Text>
+          <Text style={styles.pageName}>MyContribution</Text>
         </View>
         <TextInput
           style={styles.input}
@@ -33,7 +33,7 @@ export default function MessageScreen(props) {
           placeholder="Search"
           textContentType="none"
         />
-        <MessageCard />
+        <ContCard />
         <View>
           {/* <StarButton
             name="star"
@@ -53,7 +53,7 @@ export default function MessageScreen(props) {
           />
           <RankingButton /> */}
         </View>
-        <Text style={styles.pageTitle}>メッセージ</Text>
+        <Text style={styles.pageTitle}>貢献プロジェクト一覧</Text>
       </View>
       <View>
         <BottomBar />
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ececec',
     borderTopWidth: 5,
-    borderTopColor: '#9e887b',
+    borderTopColor: 'yellowgreen',
   },
   input: {
     top: 15,
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   },
   pageName: {
     color: '#333333',
-    paddingHorizontal: 26,
+    paddingHorizontal: 23,
     fontSize: 20,
     lineHeight: 50,
     fontWeight: 'bold',

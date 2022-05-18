@@ -1,9 +1,6 @@
-/* eslint-disable react/no-unused-prop-types */
-// import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { shape } from 'prop-types';
-// import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -45,6 +42,7 @@ export default function RankingButton(prop) {
 }
 
 RankingButton.propTypes = {
+  // eslint-disable-next-line react/no-unused-prop-types
   style: shape(),
 };
 

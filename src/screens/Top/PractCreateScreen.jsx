@@ -6,15 +6,17 @@ import {
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import firebase from 'firebase';
-import AppBar from '../components/AppBar';
-import KeyboardSafeView from '../components/KeyboardSafeView ';
 
-import StarButton from '../components/StarButton';
-import { translateErrors } from '../utils';
+import AppBar from '../../components/AppBar';
+import KeyboardSafeView from '../../components/KeyboardSafeView ';
 
-export default function IdeaCreateScreen(props) {
+import { translateErrors } from '../../utils';
+import HandsOnButton from '../../components/HandsOnButton';
+
+export default function PractCreateScreen(props) {
   const { navigation } = props;
   const [bodyText, setBodyText] = useState('');
+  const [practTitle, setPractTitle] = useState('');
 
   function handlePress() {
     const { currentUser } = firebase.auth();
@@ -22,6 +24,7 @@ export default function IdeaCreateScreen(props) {
     const ref = db.collection(`users/${currentUser.uid}/ideas`);
     ref.add({
       bodyText,
+      practTitle,
       updatedAt: new (Date)(),
     })
       .then(() => {
@@ -38,29 +41,34 @@ export default function IdeaCreateScreen(props) {
     <KeyboardSafeView style={styles.container}>
       <AppBar />
       <View style={styles.pageTop}>
-        <Text style={styles.pageName}>IdeaCreate</Text>
+        <Text style={styles.pageName}>PractCreate</Text>
       </View>
-      <View>
+      {/* <View>
         <Text style={styles.ideaDate}>2020年12月24日 11:00</Text>
+      </View> */}
+      <View>
+        <Text style={styles.ideaTitle}>実践リクエスト</Text>
       </View>
       <View>
-        <Text style={styles.ideaTitle}>アイデアクリエイト</Text>
+        <Text style={styles.ideaName}>Title</Text>
       </View>
-      <View>
-        <Text style={styles.ideaName}>Tsutomu Nakayama</Text>
-      </View>
+      <TextInput
+        value={practTitle}
+        style={styles.practTitle}
+        onChangeText={(text) => { setPractTitle(text); }}
+        autoFocus
+      />
       <ScrollView style={styles.ideaBody}>
         <TextInput
           value={bodyText}
           multiline
           style={styles.ideaText1}
           onChangeText={(text) => { setBodyText(text); }}
-          autoFocus
         />
       </ScrollView>
-      <StarButton
+      <HandsOnButton
         style={{ left: 310, bottom: 40 }}
-        name="star"
+        name="people"
         // eslint-disable-next-line react/jsx-no-bind
         onPress={handlePress}
       />
@@ -72,7 +80,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#ececec',
     borderTopWidth: 5,
-    borderTopColor: 'deepskyblue',
+    borderTopColor: 'orange',
   },
   pageTop: {
     height: 50,
@@ -81,7 +89,7 @@ const styles = StyleSheet.create({
   },
   pageName: {
     color: '#333333',
-    paddingHorizontal: 26,
+    paddingHorizontal: 23,
     fontSize: 20,
     lineHeight: 50,
     fontWeight: 'bold',
@@ -92,18 +100,18 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 30,
     justifyContent: 'center',
-    paddingHorizontal: 28,
+    paddingHorizontal: 20,
   },
   ideaTitle: {
     color: '#333333',
-    paddingHorizontal: 26,
+    paddingHorizontal: 23,
     fontSize: 18,
     lineHeight: 40,
     fontWeight: 'bold',
   },
   ideaName: {
     color: '#666666',
-    paddingHorizontal: 28,
+    paddingHorizontal: 23,
     fontSize: 14,
     lineHeight: 14,
   },
@@ -115,10 +123,20 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     height: '55%',
   },
+  practTitle: {
+    top: 5,
+    marginHorizontal: 20,
+    fontSize: 15,
+    backgroundColor: '#ffffff',
+    lineHeight: 18,
+    paddingHorizontal: 13,
+    paddingVertical: 10,
+    borderRadius: 8,
+  },
   ideaText1: {
     fontSize: 14,
     lineHeight: 24,
-    padding: 13,
+    padding: 10,
     borderRadius: 5,
   },
 });

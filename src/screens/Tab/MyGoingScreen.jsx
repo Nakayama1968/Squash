@@ -7,17 +7,17 @@ import {
 
 import firebase from 'firebase';
 
-import { TextInput } from 'react-native-gesture-handler';
 import IdeaCard from '../../components/Card/IdeaCard';
 import AppBar from '../../components/AppBar';
 import BottomBar from '../../components/BottomBar';
 import RankingButton from '../../components/RankingButton';
+import BottomIcons from '../../components/BottomIcons';
+import Loading from '../../components/Loading';
 import HeaderRightButton from '../../components/HeaderRightButton';
 
-export default function IdeaSearchScreen(props) {
+export default function MyGoingScreen(props) {
   // eslint-disable-next-line no-unused-vars
   const { navigation } = props;
-  const [search, setSearch] = useState('');
   const [ideas, setIdeas] = useState([]);
   const [isLoading, setLoading] = useState(false);
 
@@ -74,8 +74,8 @@ export default function IdeaSearchScreen(props) {
   if (ideas.length === 0) {
     return (
       <View style={emptyStyles.container}>
-        {/* <Loading isLoading={isLoading} />
-        <View style={emptyStyles.inner}>
+        <Loading isLoading={isLoading} />
+        {/* <View style={emptyStyles.inner}>
           <Text style={emptyStyles.title}>最初のアイデアを登録しよう！</Text>
           <Button
             style={emptyStyles.button}
@@ -92,27 +92,19 @@ export default function IdeaSearchScreen(props) {
       <View style={styles.container}>
         <AppBar />
         <View style={styles.pageTop}>
-          <Text style={styles.pageName}>IdeaSearch</Text>
+          <Text style={styles.pageName}>GoingProject</Text>
         </View>
-        <TextInput
-          style={styles.input}
-          value={search}
-          onChangeText={(text) => { setSearch(text); }}
-          autoCapitalize="none"
-          placeholder="Search"
-          textContentType="none"
-        />
         <View style={styles.baseStyle}>
           <IdeaCard ideas={ideas} />
         </View>
-        <RankingButton style={{ top: 40 }} />
-        <IdeaCard />
-        <Text style={styles.pageTitle}>アイデア検索</Text>
+        <RankingButton />
+        <Text style={styles.pageTitle}>参加プロジェクト</Text>
       </View>
+      <View style={styles.bottomIcons} />
+      <BottomIcons />
       <View>
         <BottomBar />
       </View>
-
     </>
   );
 }
@@ -135,13 +127,6 @@ const styles = StyleSheet.create({
     justifyContent: 'top',
     borderRadius: 8,
   },
-  input: {
-    top: 15,
-    padding: 10,
-    marginHorizontal: '3%',
-    backgroundColor: '#ffffff',
-    borderRadius: 15,
-  },
   pageTop: {
     height: 50,
     backgroundColor: '#ffffff',
@@ -156,10 +141,14 @@ const styles = StyleSheet.create({
   },
   pageTitle: {
     position: 'absolute',
-    top: 200,
+    top: 160,
     paddingHorizontal: '8%',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  bottomIcons: {
+    height: 120,
+    backgroundColor: 'rgba(256,256,256,0.9)',
   },
 });
 const emptyStyles = StyleSheet.create({

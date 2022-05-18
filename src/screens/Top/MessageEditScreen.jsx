@@ -5,23 +5,23 @@ import {
   View, ScrollView, Text, StyleSheet,
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
-import AppBar from '../components/AppBar';
+import AppBar from '../../components/AppBar';
 
-import HandsOnButton from '../components/HandsOnButton';
+import EditButton from '../../components/EditButton';
 
-export default function IdeaHandsScreen(props) {
+export default function MessageEditScreen(props) {
   const { navigation } = props;
   return (
     <View style={styles.container}>
       <AppBar />
       <View style={styles.pageTop}>
-        <Text style={styles.pageName}>IdeaHands</Text>
+        <Text style={styles.pageName}>MessageEdit</Text>
       </View>
       <View>
         <Text style={styles.ideaDate}>2020年12月24日 11:00</Text>
       </View>
       <View>
-        <Text style={styles.ideaTitle}>Re:アイデアハンズ</Text>
+        <Text style={styles.ideaTitle}>メッセージエディット</Text>
       </View>
       <View>
         <Text style={styles.ideaName}>Tsutomu Nakayama</Text>
@@ -29,9 +29,9 @@ export default function IdeaHandsScreen(props) {
       <ScrollView style={styles.ideaBody}>
         <TextInput style={styles.ideaText1} />
       </ScrollView>
-      <HandsOnButton
+      <EditButton
         style={{ right: 40, top: 'auto', bottom: 0 }}
-        name="people"
+        name="message-outline"
         onPress={() => { navigation.navigate('IdeaList'); }}
       />
     </View>
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#ececec',
     borderTopWidth: 5,
-    borderTopColor: '#Eb8e26',
+    borderTopColor: '#26cb78',
   },
   pageTop: {
     height: 50,

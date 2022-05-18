@@ -5,23 +5,23 @@ import {
   View, ScrollView, Text, StyleSheet,
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
-import AppBar from '../../components/AppBar';
+import AppBar from '../components/AppBar';
 
-import EditButton from '../../components/EditButton';
+import RacketButton from '../components/RacketButton';
 
-export default function MessageEditScreen(props) {
+export default function IdeaPracticeScreen(props) {
   const { navigation } = props;
   return (
     <View style={styles.container}>
       <AppBar />
       <View style={styles.pageTop}>
-        <Text style={styles.pageName}>MessageEdit</Text>
+        <Text style={styles.pageName}>IdeaContri</Text>
       </View>
       <View>
         <Text style={styles.ideaDate}>2020年12月24日 11:00</Text>
       </View>
       <View>
-        <Text style={styles.ideaTitle}>メッセージエディット</Text>
+        <Text style={styles.ideaTitle}>Re:アイデアコントリ</Text>
       </View>
       <View>
         <Text style={styles.ideaName}>Tsutomu Nakayama</Text>
@@ -29,10 +29,10 @@ export default function MessageEditScreen(props) {
       <ScrollView style={styles.ideaBody}>
         <TextInput style={styles.ideaText1} />
       </ScrollView>
-      <EditButton
+      <RacketButton
         style={{ right: 40, top: 'auto', bottom: 0 }}
-        name="message-outline"
-        onPress={() => { navigation.navigate('IdeaList'); }}
+        name="tennis"
+        onPress={() => { navigation.navigate('IdeaEdit'); }}
       />
     </View>
   );
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#ececec',
     borderTopWidth: 5,
-    borderTopColor: '#26cb78',
+    borderTopcolor: 'olivedrab',
   },
   pageTop: {
     height: 50,
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   },
   pageName: {
     color: '#333333',
-    paddingHorizontal: 26,
+    paddingHorizontal: 23,
     fontSize: 20,
     lineHeight: 50,
     fontWeight: 'bold',
@@ -62,11 +62,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 30,
     justifyContent: 'center',
-    paddingHorizontal: 28,
+    paddingHorizontal: 20,
   },
   ideaTitle: {
     color: '#333333',
-    paddingHorizontal: 26,
+    paddingHorizontal: 23,
     fontSize: 18,
     lineHeight: 40,
     fontWeight: 'bold',

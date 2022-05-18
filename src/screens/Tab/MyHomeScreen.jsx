@@ -4,7 +4,7 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import AppBar from '../../components/AppBar';
 import BottomBar from '../../components/BottomBar';
-import ProfileCard from '../../components/ProfileCard';
+import ProfileCard from '../../components/Card/ProfileCard';
 
 export default function MyHomeScreen(props) {
   // eslint-disable-next-line no-unused-vars
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   },
   pageName: {
     color: '#333333',
-    paddingHorizontal: 26,
+    paddingHorizontal: 23,
     fontSize: 20,
     lineHeight: 50,
     fontWeight: 'bold',
