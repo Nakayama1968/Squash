@@ -17,7 +17,7 @@ import BottomBar from '../../components/BottomBar';
 export default function ContriCreateScreen(props) {
   const { navigation } = props;
   const [bodyText, setBodyText] = useState('');
-  const [contriTitle, setContriTitle] = useState('');
+  const [contentText, setContentText] = useState('');
 
   function handlePress() {
     const { currentUser } = firebase.auth();
@@ -25,6 +25,7 @@ export default function ContriCreateScreen(props) {
     const ref = db.collection(`users/${currentUser.uid}/ideas`);
     ref.add({
       bodyText,
+      contentText,
       updatedAt: new (Date)(),
     })
       .then(() => {
@@ -37,38 +38,44 @@ export default function ContriCreateScreen(props) {
   }
 
   return (
-    <><View>
-      <AppBar />
-      <View style={styles.pageTop}>
-        <Text style={styles.pageName}>ContriCreate</Text>
-      </View>
-      {/* <View>
+    <>
+      <KeyboardSafeView style={styles.container}>
+        <AppBar />
+        <View style={styles.pageTop}>
+          <Text style={styles.pageName}>ContriCreate</Text>
+        </View>
+        {/* <View>
 <Text style={styles.ideaDate}>2020年12月24日 11:00</Text>
 </View> */}
-      <View>
-        <Text style={styles.ideaTitle}>貢献リクエスト</Text>
-      </View>
-      <View>
-        <Text style={styles.ideaName}>Title</Text>
-      </View>
-      <TextInput
-        value={contriTitle}
-        style={styles.contriTitle}
-        onChangeText={(text) => { setContriTitle(text); } }
-        autoFocus /><ScrollView style={styles.ideaBody}>
+        <View>
+          <Text style={styles.ideaTitle}>貢献リクエスト</Text>
+        </View>
+        <View>
+          <Text style={styles.ideaName}>Title</Text>
+        </View>
         <TextInput
           value={bodyText}
-          multiline
-          style={styles.ideaText1}
-          onChangeText={(text) => { setBodyText(text); } } />
-      </ScrollView>
-      <RacketButton
-        style={{ left: 310, bottom: 40 }}
-        name="tennis"
+          style={styles.contriTitle}
+          onChangeText={(text) => { setBodyText(text); }}
+          autoFocus
+        />
+        <ScrollView style={styles.ideaBody}>
+          <TextInput
+            value={contentText}
+            multiline
+            style={styles.ideaText1}
+            onChangeText={(text) => { setContentText(text); }}
+          />
+        </ScrollView>
+        <RacketButton
+          style={{ left: '80%', bottom: 40 }}
+          name="tennis"
         // eslint-disable-next-line react/jsx-no-bind
-        onPress={handlePress} />
-    </View>
-    <BottomBar />
+          onPress={handlePress}
+        />
+      </KeyboardSafeView>
+      <BottomBar />
+    </>
   );
 }
 

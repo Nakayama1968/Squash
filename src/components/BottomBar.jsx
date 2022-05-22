@@ -10,43 +10,41 @@ export default function BottomBar(props) {
   const { style } = props;
   const navigation = useNavigation();
   return (
-    <View>
-      <View style={styles.BottomBar}>
-        <View style={styles.BottomBarInner}>
-          <TouchableOpacity
-            onPress={() => { navigation.navigate('IdeaSearch'); }}
-          >
-            <FontAwesome name="search" size={26} color="#eeeeee" />
-          </TouchableOpacity>
+    <View style={styles.BottomBar}>
+      <View style={styles.BottomBarInner}>
+        <TouchableOpacity
+          onPress={() => { navigation.navigate('IdeaSearch'); }}
+        >
+          <FontAwesome name="search" size={26} color="#eeeeee" />
+        </TouchableOpacity>
 
-          <TouchableOpacity
-            style={[styles.bottomNaviButton2, style]}
-            onPress={() => { navigation.navigate('MemberSearch'); }}
-          >
-            <FontAwesome5 name="user-alt" size={26} color="#eeeeee" />
-          </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.bottomNaviButton2, style]}
+          onPress={() => { navigation.navigate('MemberSearch'); }}
+        >
+          <FontAwesome5 name="user-alt" size={26} color="#eeeeee" />
+        </TouchableOpacity>
 
-          <TouchableOpacity
-            style={[styles.bottomNaviButton4, style]}
-            onPress={() => { navigation.navigate('MyGoing'); }}
-          >
-            <FontAwesome5 name="list" size={26} color="#eeeeee" />
-          </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.bottomNaviButton4, style]}
+          onPress={() => { navigation.navigate('MyGoing'); }}
+        >
+          <FontAwesome5 name="list" size={26} color="#eeeeee" />
+        </TouchableOpacity>
 
-          <TouchableOpacity
-            style={[styles.bottomNaviButton3, style]}
-            onPress={() => { navigation.navigate('Point'); }}
-          >
-            <MaterialIcons name="pie-chart" size={26} color="#eeeeee" />
-          </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.bottomNaviButton3, style]}
+          onPress={() => { navigation.navigate('Point'); }}
+        >
+          <MaterialIcons name="pie-chart" size={28} color="#eeeeee" />
+        </TouchableOpacity>
 
-          <TouchableOpacity
-            style={[styles.bottomNaviButton5, style]}
-            onPress={() => { navigation.navigate('MyHome'); }}
-          >
-            <FontAwesome name="home" size={26} color="#eeeeee" />
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity
+          style={[styles.bottomNaviButton5, style]}
+          onPress={() => { navigation.navigate('MyHome'); }}
+        >
+          <FontAwesome name="home" size={32} color="#eeeeee" />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -66,7 +64,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 'auto',
     bottom: 0,
-    height: 70,
+    height: 103,
     backgroundColor: '#5c4342',
   },
   BottomBarInner: {

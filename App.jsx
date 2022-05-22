@@ -50,7 +50,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator
         // 最初に表示されるページの指定
-        initialRouteName="IdeaList"
+        initialRouteName="LogIn"
         screenOptions={{
           headerStyle: { backgroundColor: '#111111' },
           headerTitleStyle: { color: '#ffffff', fontSize: 24 },

@@ -5,6 +5,7 @@ import { shape, string } from 'prop-types';
 import {
   View, ScrollView, Text, StyleSheet,
 } from 'react-native';
+
 import firebase from 'firebase';
 
 import AppBar from '../components/AppBar';
@@ -12,6 +13,7 @@ import HandsOnButton from '../components/HandsOnButton';
 import HeartButton from '../components/HeartButton';
 import RacketButton from '../components/RacketButton';
 import { dateToString } from '../utils';
+import BottomBar from '../components/BottomBar';
 
 export default function IdeaDetailScreen(props) {
   const { navigation, route } = props;
@@ -30,8 +32,9 @@ export default function IdeaDetailScreen(props) {
         const data = doc.data();
         setIdea({
           id: doc.id,
-          bodyText: data.bodytext,
-          updatedAt: data.updateAt.toDate(),
+          bodyText: data.bodyText,
+          contentText: data.contentText,
+          updatedAt: data.updatedAt.toDate(),
         });
       });
     }
@@ -39,35 +42,37 @@ export default function IdeaDetailScreen(props) {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <AppBar />
-      <View style={styles.pageTop}>
-        <Text style={styles.pageName} numberOflines={1}>{idea && idea.bodyText}</Text>
-        <Text style={styles.ideaDate}>{idea && dateToString(idea.updatedAt)}</Text>
-        <Text style={styles.ideaTitle}>アイデアディテ-ル</Text>
-        <Text style={styles.ideaName}>Tsutomu Nakayama</Text>
+    <>
+      <View style={styles.container}>
+        <AppBar />
+        <View style={styles.pageTop}>
+          <Text style={styles.pageName}>アイディア・ディティール</Text>
+        </View>
+        <ScrollView style={styles.ideaBody}>
+          <Text style={styles.ideaTitle}>{idea && idea.bodyText}</Text>
+          <Text style={styles.ideaDate}>{idea && dateToString(idea.updatedAt)}</Text>
+          <Text style={styles.ideaText}>{idea && idea.contentText}</Text>
+        </ScrollView>
+        <View>
+          <HeartButton
+            style={{ left: 40, top: 'auto', bottom: 0 }}
+            name="heart"
+            onPress={() => { navigation.navigate('IdeaCreate'); }}
+          />
+          <RacketButton
+            style={{ right: 100, top: 'auto', bottom: 40 }}
+            name="tennis"
+            onPress={() => { navigation.navigate('IdeaCreate'); }}
+          />
+          <HandsOnButton
+            style={{ right: 40, top: 'auto', bottom: 0 }}
+            name="people"
+            onPress={() => { navigation.navigate('IdeaHands'); }}
+          />
+        </View>
       </View>
-      <ScrollView style={styles.ideaBody}>
-        <Text style={styles.ideaText1}>
-          {idea && idea.bodyText}
-        </Text>
-      </ScrollView>
-      <HeartButton
-        style={{ left: 40, top: 'auto', bottom: 0 }}
-        name="heart"
-        onPress={() => { navigation.navigate('IdeaCreate'); }}
-      />
-      <RacketButton
-        style={{ right: 100, top: 'auto', bottom: 0 }}
-        name="tennis"
-        onPress={() => { navigation.navigate('IdeaContri'); }}
-      />
-      <HandsOnButton
-        style={{ right: 40, top: 'auto', bottom: 0 }}
-        name="people"
-        onPress={() => { navigation.navigate('IdeaHands'); }}
-      />
-    </View>
+      <BottomBar />
+    </>
   );
 }
 
@@ -99,22 +104,16 @@ const styles = StyleSheet.create({
     color: '#999999',
     top: 5,
     fontSize: 12,
-    lineHeight: 30,
+    lineHeight: 32,
     justifyContent: 'center',
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
   },
   ideaTitle: {
     color: '#333333',
-    paddingHorizontal: 23,
+    paddingHorizontal: 8,
     fontSize: 18,
-    lineHeight: 40,
+    top: 8,
     fontWeight: 'bold',
-  },
-  ideaName: {
-    color: '#666666',
-    paddingHorizontal: 28,
-    fontSize: 14,
-    lineHeight: 14,
   },
   ideaBody: {
     margin: 20,
@@ -122,12 +121,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
     backgroundColor: '#ffffff',
     borderRadius: 8,
-    height: '55%',
+    height: '90%',
+    bottom: 20,
   },
-  ideaText1: {
+  ideaText: {
     fontSize: 14,
     lineHeight: 24,
-    padding: 13,
-    borderRadius: 5,
+    padding: 20,
   },
 });

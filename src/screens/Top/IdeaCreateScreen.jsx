@@ -12,10 +12,12 @@ import KeyboardSafeView from '../../components/KeyboardSafeView ';
 
 import StarButton from '../../components/StarButton';
 import { translateErrors } from '../../utils';
+import BottomBar from '../../components/BottomBar';
 
 export default function IdeaCreateScreen(props) {
   const { navigation } = props;
   const [bodyText, setBodyText] = useState('');
+  const [contentText, setContentText] = useState('');
 
   function handlePress() {
     const { currentUser } = firebase.auth();
@@ -23,6 +25,7 @@ export default function IdeaCreateScreen(props) {
     const ref = db.collection(`users/${currentUser.uid}/ideas`);
     ref.add({
       bodyText,
+      contentText,
       updatedAt: new (Date)(),
     })
       .then(() => {
@@ -36,36 +39,44 @@ export default function IdeaCreateScreen(props) {
 
   return (
 
-    <KeyboardSafeView style={styles.container}>
-      <AppBar />
-      <View style={styles.pageTop}>
-        <Text style={styles.pageName}>IdeaCreate</Text>
-      </View>
-      <View>
-        <Text style={styles.ideaDate}>2020年12月24日 11:00</Text>
-      </View>
-      <View>
-        <Text style={styles.ideaTitle}>アイデアクリエイト</Text>
-      </View>
-      <View>
-        <Text style={styles.ideaName}>Tsutomu Nakayama</Text>
-      </View>
-      <ScrollView style={styles.ideaBody}>
+    <>
+      <KeyboardSafeView style={styles.container}>
+        <AppBar />
+        <View style={styles.pageTop}>
+          <Text style={styles.pageName}>IdeaCreate</Text>
+        </View>
+        {/* <View>
+      <Text style={styles.ideaDate}>2020年12月24日 11:00</Text>
+    </View> */}
+        <View>
+          <Text style={styles.pageTitle}>アイデアクリエイト</Text>
+        </View>
+        <View>
+          <Text style={styles.ideaName}>Title</Text>
+        </View>
         <TextInput
           value={bodyText}
-          multiline
-          style={styles.ideaText1}
+          style={styles.ideaTitle}
           onChangeText={(text) => { setBodyText(text); }}
           autoFocus
         />
-      </ScrollView>
-      <StarButton
-        style={{ left: 310, bottom: 40 }}
-        name="star"
+        <ScrollView style={styles.ideaBody}>
+          <TextInput
+            value={contentText}
+            multiline
+            style={styles.ideaText1}
+            onChangeText={(text) => { setContentText(text); }}
+          />
+        </ScrollView>
+        <StarButton
+          style={{ left: '80%', bottom: 40 }}
+          name="star"
         // eslint-disable-next-line react/jsx-no-bind
-        onPress={handlePress}
-      />
-    </KeyboardSafeView>
+          onPress={handlePress}
+        />
+      </KeyboardSafeView>
+      <BottomBar />
+    </>
   );
 }
 
@@ -87,6 +98,13 @@ const styles = StyleSheet.create({
     lineHeight: 50,
     fontWeight: 'bold',
   },
+  pageTitle: {
+    color: '#333333',
+    paddingHorizontal: 23,
+    fontSize: 18,
+    lineHeight: 40,
+    fontWeight: 'bold',
+  },
   ideaDate: {
     color: '#999999',
     top: 5,
@@ -96,11 +114,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   ideaTitle: {
-    color: '#333333',
-    paddingHorizontal: 23,
-    fontSize: 18,
-    lineHeight: 40,
-    fontWeight: 'bold',
+    top: 5,
+    marginHorizontal: 20,
+    fontSize: 15,
+    backgroundColor: '#ffffff',
+    lineHeight: 18,
+    paddingHorizontal: 13,
+    paddingVertical: 10,
+    borderRadius: 8,
   },
   ideaName: {
     color: '#666666',

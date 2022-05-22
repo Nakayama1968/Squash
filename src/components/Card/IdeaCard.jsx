@@ -27,6 +27,7 @@ export default function IdeaCard(props) {
           </View>
           <View style={styles.profile}>
             <Text style={styles.memberName} numberOfLines={1}>{item.bodyText}</Text>
+            <Text style={styles.memberName} numberOfLines={1}>{item.contentText}</Text>
             <Text style={styles.memberDate}>{dateToString(item.updatedAt)}</Text>
             <Text style={styles.memberHash}>＃循環型 ＃水質 ＃森林</Text>
           </View>
@@ -51,6 +52,7 @@ IdeaCard.propTypes = {
   ideas: arrayOf(shape({
     id: string,
     bodyText: string,
+    contentText: string,
     updatedAt: instanceOf(Date),
   })).isRequired,
 };

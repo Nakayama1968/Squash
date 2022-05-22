@@ -94,7 +94,7 @@ export default function MyGoingScreen(props) {
         <View style={styles.pageTop}>
           <Text style={styles.pageName}>GoingProject</Text>
         </View>
-        <View style={styles.baseStyle}>
+        <View style={styles.wrapper}>
           <IdeaCard ideas={ideas} />
         </View>
         <RankingButton />
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 5,
     borderTopColor: '#9e887b',
   },
-  baseStyle: {
+  wrapper: {
     backgroundColor: '#fcfcfc',
     top: 30,
     width: '94%',
@@ -147,8 +147,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   bottomIcons: {
-    height: 120,
-    backgroundColor: 'rgba(256,256,256,0.9)',
+    height: 150,
+    backgroundColor: 'rgba(256,256,256,0.7)',
   },
 });
 const emptyStyles = StyleSheet.create({

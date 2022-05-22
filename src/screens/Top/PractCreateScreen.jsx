@@ -12,11 +12,12 @@ import KeyboardSafeView from '../../components/KeyboardSafeView ';
 
 import { translateErrors } from '../../utils';
 import HandsOnButton from '../../components/HandsOnButton';
+import BottomBar from '../../components/BottomBar';
 
 export default function PractCreateScreen(props) {
   const { navigation } = props;
   const [bodyText, setBodyText] = useState('');
-  const [practTitle, setPractTitle] = useState('');
+  const [contentText, setContentText] = useState('');
 
   function handlePress() {
     const { currentUser } = firebase.auth();
@@ -24,7 +25,7 @@ export default function PractCreateScreen(props) {
     const ref = db.collection(`users/${currentUser.uid}/ideas`);
     ref.add({
       bodyText,
-      practTitle,
+      contentText,
       updatedAt: new (Date)(),
     })
       .then(() => {
@@ -37,42 +38,45 @@ export default function PractCreateScreen(props) {
   }
 
   return (
-
-    <KeyboardSafeView style={styles.container}>
-      <AppBar />
-      <View style={styles.pageTop}>
-        <Text style={styles.pageName}>PractCreate</Text>
-      </View>
-      {/* <View>
-        <Text style={styles.ideaDate}>2020年12月24日 11:00</Text>
-      </View> */}
-      <View>
-        <Text style={styles.ideaTitle}>実践リクエスト</Text>
-      </View>
-      <View>
-        <Text style={styles.ideaName}>Title</Text>
-      </View>
-      <TextInput
-        value={practTitle}
-        style={styles.practTitle}
-        onChangeText={(text) => { setPractTitle(text); }}
-        autoFocus
-      />
-      <ScrollView style={styles.ideaBody}>
+    <>
+      <KeyboardSafeView style={styles.container}>
+        <AppBar />
+        <View style={styles.pageTop}>
+          <Text style={styles.pageName}>PractCreate</Text>
+        </View>
+        {/* <View>
+  <Text style={styles.ideaDate}>2020年12月24日 11:00</Text>
+</View> */}
+        <View>
+          <Text style={styles.ideaTitle}>実践リクエスト</Text>
+        </View>
+        <View>
+          <Text style={styles.ideaName}>Title</Text>
+        </View>
         <TextInput
           value={bodyText}
-          multiline
-          style={styles.ideaText1}
+          style={styles.contentText}
           onChangeText={(text) => { setBodyText(text); }}
+          autoFocus
         />
-      </ScrollView>
-      <HandsOnButton
-        style={{ left: 310, bottom: 40 }}
-        name="people"
+        <ScrollView style={styles.ideaBody}>
+          <TextInput
+            value={contentText}
+            multiline
+            style={styles.ideaText1}
+            onChangeText={(text) => { setContentText(text); }}
+          />
+        </ScrollView>
+        <HandsOnButton
+          style={{ left: '80%', bottom: 40 }}
+          name="people"
         // eslint-disable-next-line react/jsx-no-bind
-        onPress={handlePress}
-      />
-    </KeyboardSafeView>
+          onPress={handlePress}
+        />
+      </KeyboardSafeView>
+      <BottomBar />
+
+    </>
   );
 }
 
@@ -123,7 +127,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     height: '55%',
   },
-  practTitle: {
+  contentText: {
     top: 5,
     marginHorizontal: 20,
     fontSize: 15,

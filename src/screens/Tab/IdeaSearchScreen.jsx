@@ -19,7 +19,10 @@ export default function IdeaSearchScreen(props) {
   const { navigation } = props;
   const [search, setSearch] = useState('');
   const [ideas, setIdeas] = useState([]);
-  const [isLoading, setLoading] = useState(false);
+  const [
+    // eslint-disable-next-line no-unused-vars
+    isLoading,
+    setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -106,7 +109,6 @@ export default function IdeaSearchScreen(props) {
           <IdeaCard ideas={ideas} />
         </View>
         <RankingButton style={{ top: 40 }} />
-        <IdeaCard />
         <Text style={styles.pageTitle}>アイデア検索</Text>
       </View>
       <View>

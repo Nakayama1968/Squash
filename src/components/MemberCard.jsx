@@ -13,7 +13,7 @@ export default function MemberCard() {
       <View style={styles.baseStyle}>
         <TouchableOpacity
           style={styles.MemberCardItem}
-          onPress={() => { navigation.navigate('IdeaDetail'); }}
+          onPress={() => { navigation.navigate('IdeaList'); }}
         >
           <View style={styles.avater}>
             <FontAwesome name="user-circle" size={40} color="green" />
